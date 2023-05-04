@@ -47,10 +47,10 @@ public class VisorMovement : MonoBehaviour
     {
         _moveX = Input.GetAxis("Horizontal");
         _moveZ = Input.GetAxis("Vertical");
-        _moveDirection = transform.TransformDirection(new Vector3(_moveX, 0f, _moveZ));
+        _moveDirection = this.transform.TransformDirection(new Vector3(_moveX, 0f, _moveZ));
         _visor.Move(_moveDirection * Time.deltaTime * _speedMovement);
 
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, _minPositionX, _maxPositionX), Mathf.Clamp(transform.position.y, _minPositionY, _maxPositionY), Mathf.Clamp(transform.position.z, _minPositionZ, _maxPositionZ));
+        this.transform.position = new Vector3(Mathf.Clamp(this.transform.position.x, _minPositionX, _maxPositionX), Mathf.Clamp(this.transform.position.y, _minPositionY, _maxPositionY), Mathf.Clamp(this.transform.position.z, _minPositionZ, _maxPositionZ));
     }
 
     private void Rotate()
@@ -58,6 +58,6 @@ public class VisorMovement : MonoBehaviour
         _rotationX += Input.GetAxis("Mouse X") * Time.deltaTime * _mouseSensitivity;
         _rotationY += Input.GetAxis("Mouse Y") * Time.deltaTime * _mouseSensitivity;
         _rotationY = Mathf.Clamp(_rotationY, _minRotationX, _maxRotationX);
-        transform.rotation = Quaternion.Euler(-_rotationY, _rotationX, 0f);
+        this.transform.rotation = Quaternion.Euler(-_rotationY, _rotationX, 0f);
     }
 }
