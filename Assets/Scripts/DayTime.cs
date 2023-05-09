@@ -6,9 +6,10 @@ public class DayTime : MonoBehaviour
 {
     [SerializeField] private Gradient _directionalLightGradient;
     [SerializeField] private Gradient _ambientLightGradient;
-    [SerializeField, Range(1, 3600)] private float _timeDayInSeconds = 60;
+    [SerializeField, Range(1, 3600)] private float _timeDayInSeconds = 1440;
     [SerializeField, Range(0f, 1f)] private float _timeProgress;
     [SerializeField] private Light _light;
+    [SerializeField] private Timer _timer;
 
     private Vector3 _defaultAngeles;
 
@@ -16,7 +17,8 @@ public class DayTime : MonoBehaviour
 
     private void Update()
     {
-        _timeProgress += Time.deltaTime / _timeDayInSeconds;
+        if (_timer.IsPlaying())
+            _timeProgress += Time.deltaTime / _timeDayInSeconds;
 
         if (_timeProgress > 1f)
             _timeProgress = 0f;

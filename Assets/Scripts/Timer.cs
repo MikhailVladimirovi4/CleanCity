@@ -4,6 +4,7 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private int _secondsDelay;
+    [SerializeField] private int _timeSpeed;
 
     private int _minutes;
     private int _hours;
@@ -14,6 +15,7 @@ public class Timer : MonoBehaviour
     public int GetMinutes() => _minutes;
     public int GetHours() => _hours;
     public int GetDays() => _days;
+    public bool IsPlaying() => _isPlaying;
 
     private void Start()
     {
@@ -41,7 +43,7 @@ public class Timer : MonoBehaviour
     {
         while (_isPlaying) 
         {
-            _minutes++;
+            _minutes += _secondsDelay * _timeSpeed;
             yield return _delay;
         }
     }
