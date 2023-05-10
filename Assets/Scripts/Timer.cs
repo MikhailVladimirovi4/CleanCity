@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Timer : MonoBehaviour
 {
@@ -9,7 +10,10 @@ public class Timer : MonoBehaviour
     private int _minutes;
     private int _hours;
     private int _days;
+    private readonly int _dayPerWeek = 1;
     private WaitForSeconds _delay;
+
+    public event UnityAction WeekIsOver; 
 
     public bool IsPlaying { get; private set; }
 
@@ -17,7 +21,7 @@ public class Timer : MonoBehaviour
     public int GetHours() => _hours;
     public int GetDays() => _days;
 
-    public float GettimeSpeed() => _timeSpeed;
+    public float GetTimeSpeed() => _timeSpeed;
 
     public WaitForSeconds GetDelay() => _delay;
 
@@ -39,6 +43,11 @@ public class Timer : MonoBehaviour
             {
                 _hours = 0;
                 _days++;
+
+                if (_days % _dayPerWeek == 0)
+                {
+                    WeekIsOver?.Invoke();
+                }
             }
         }
     }

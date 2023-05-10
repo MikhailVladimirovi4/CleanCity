@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _secondsDelay: 1
-  _timeSpeed: 1
+  _timeSpeed: 60
 --- !u!114 &79054199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,7 +369,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287024505}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 111.885, y: 25.172, z: 176.93}
+  m_LocalPosition: {x: 133, y: 15, z: 270}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1557040704}
@@ -434,8 +434,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 014778b3ac7a5eb49804439147e727d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _residents: 5
-  _trashMaxIndex: 100
+  _residents: 50
+  _maxResidents: 100
+  _minResidents: 25
+  _trashMaxIndex: 10000
   _timer: {fileID: 79054198}
   _controller: {fileID: 79054204}
   _smell: {fileID: 324384884}
