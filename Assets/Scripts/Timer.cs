@@ -10,17 +10,21 @@ public class Timer : MonoBehaviour
     private int _hours;
     private int _days;
     private WaitForSeconds _delay;
-    private bool _isPlaying;
+
+    public bool IsPlaying { get; private set; }
 
     public int GetMinutes() => _minutes;
     public int GetHours() => _hours;
     public int GetDays() => _days;
-    public bool IsPlaying() => _isPlaying;
+
+    public float GettimeSpeed() => _timeSpeed;
+
+    public WaitForSeconds GetDelay() => _delay;
 
     private void Start()
     {
         _delay = new WaitForSeconds(_secondsDelay);
-        _isPlaying = true;
+        IsPlaying = true;
         StartCoroutine(TimeFlow());
     }
 
@@ -41,7 +45,7 @@ public class Timer : MonoBehaviour
 
     IEnumerator TimeFlow()
     {
-        while (_isPlaying) 
+        while (IsPlaying)
         {
             _minutes += _secondsDelay * _timeSpeed;
             yield return _delay;
