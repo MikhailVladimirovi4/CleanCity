@@ -10,7 +10,8 @@ public class Timer : MonoBehaviour
     private int _minutes;
     private int _hours;
     private int _days;
-    private readonly int _dayPerWeek = 1;
+    private readonly int _dayWeek = 7;
+    private readonly int _timeDay = 1440;
     private WaitForSeconds _delay;
 
     public event UnityAction WeekIsOver; 
@@ -20,6 +21,7 @@ public class Timer : MonoBehaviour
     public int GetMinutes() => _minutes;
     public int GetHours() => _hours;
     public int GetDays() => _days;
+    public int GetTimeDay() => _timeDay;
 
     public float GetTimeSpeed() => _timeSpeed;
 
@@ -44,7 +46,7 @@ public class Timer : MonoBehaviour
                 _hours = 0;
                 _days++;
 
-                if (_days % _dayPerWeek == 0)
+                if (_days % _dayWeek == 0)
                 {
                     WeekIsOver?.Invoke();
                 }

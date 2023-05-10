@@ -6,7 +6,6 @@ public class BlackState : MonoBehaviour
     [SerializeField] private int _residents;
     [SerializeField] private int _maxResidents;
     [SerializeField] private int _minResidents;
-    [SerializeField] private int _trashMaxIndex;
     [SerializeField] private Timer _timer;
     [SerializeField] private GameController _controller;
     [SerializeField] private Smell _smell;
@@ -14,6 +13,7 @@ public class BlackState : MonoBehaviour
     private float _trashCount;
     private int _addTrash;
     private bool _addResidents;
+    private int _trashMaxIndex;
 
     public int GetResidents() => _residents;
     public float GetTrashCount() => _trashCount;
@@ -33,6 +33,7 @@ public class BlackState : MonoBehaviour
     {
         _addTrash = _controller.GetTrashRatePerson();
         _addResidents = true;
+        _trashMaxIndex = _maxResidents * _timer.GetTimeDay();
         StartCoroutine(AddTrash());
     }
 
@@ -44,11 +45,10 @@ public class BlackState : MonoBehaviour
         }
         else
         {
-            _addResidents = true;
-
-            if (_residents > _minResidents)
+            if (!_addResidents && _residents > _minResidents)
                 _residents--;
 
+            _addResidents = true;
         }
     }
 
@@ -58,8 +58,7 @@ public class BlackState : MonoBehaviour
         {
             if (_trashCount < _trashMaxIndex)
             {
-                _trashCount += _residents * _addTrash;
-                _smell.gameObject.SetActive(false);
+                _trashCount += _residents * _addTrash * _timer.GetTimeSpeed();
             }
             else
             {
