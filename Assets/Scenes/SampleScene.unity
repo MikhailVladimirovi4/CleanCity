@@ -325,17 +325,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trashRatePersonPerTime: 1
---- !u!114 &145619030 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 372635621, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
-  m_PrefabInstance: {fileID: 4583601733201218208}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 014778b3ac7a5eb49804439147e727d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &287024505
 GameObject:
   m_ObjectHideFlags: 0
@@ -1151,9 +1140,5 @@ PrefabInstance:
       propertyPath: _visor
       value: 
       objectReference: {fileID: 287024507}
-    - target: {fileID: 6052205628353108515, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
-      propertyPath: _blockState
-      value: 
-      objectReference: {fileID: 145619030}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
