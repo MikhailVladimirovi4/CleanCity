@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class TrashTrack : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float _speed;
+    [SerializeField] private int _cargoSize;
+    [SerializeField] private int _loadingSpeed;
+    [SerializeField] private float _maxFuelTank;
+    [SerializeField] private float _fuelConsumption;
+    [SerializeField] private Timer _timer;
+
+    private int _currentTrash;
+    private Transform _targetMove;
+
+    public int GetCargoSize() => _cargoSize;
+    public int GetCurrentTrash() => _currentTrash;
+    public int GetLoadingSpeed() => _loadingSpeed;
+
+    public void AddTrash(int addTrash)
     {
-        
+        if (_currentTrash < _cargoSize)
+            _currentTrash += addTrash * _timer.GetTimeSpeed();
+        else
+            _currentTrash = _cargoSize;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RemoveTrash()
     {
-        
+        _currentTrash = 0;
     }
 }

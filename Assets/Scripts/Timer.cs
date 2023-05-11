@@ -14,7 +14,8 @@ public class Timer : MonoBehaviour
     private readonly int _timeDay = 1440;
     private WaitForSeconds _delay;
 
-    public event UnityAction WeekIsOver; 
+    public event UnityAction WeekIsOver;
+    private Coroutine _timeFlow;
 
     public bool IsPlaying { get; private set; }
 
@@ -23,15 +24,19 @@ public class Timer : MonoBehaviour
     public int GetDays() => _days;
     public int GetTimeDay() => _timeDay;
 
-    public float GetTimeSpeed() => _timeSpeed;
+    public int GetTimeSpeed() => _timeSpeed;
 
     public WaitForSeconds GetDelay() => _delay;
 
+    private void OnEnable()
+    {
+        IsPlaying = true;
+        _delay = new WaitForSeconds(_secondsDelay);
+    }
+
     private void Start()
     {
-        _delay = new WaitForSeconds(_secondsDelay);
-        IsPlaying = true;
-        StartCoroutine(TimeFlow());
+        _timeFlow = StartCoroutine(TimeFlow());
     }
 
     private void FixedUpdate()

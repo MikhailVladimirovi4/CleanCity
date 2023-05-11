@@ -27,7 +27,7 @@ public class StateDisplay : MonoBehaviour
         else
             _trashProgress = _perCent;
      
-        _textMeshPro.text = "Жителей " + Convert.ToString(_blockState.GetResidents()) + ". Мусорный бак заполнен на " + Convert.ToString(Convert.ToInt32(_trashProgress)) + "%.";
+        _textMeshPro.text = "Жителей " + Convert.ToString(_blockState.GetResidents()) + ". Мусорный бак заполнен на " + Convert.ToString(_trashProgress) + "%.";
         _textMeshPro.color = _vertexColorGradient.Evaluate(_trashProgress / _perCent);
     }
 }

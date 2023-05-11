@@ -8648,7 +8648,7 @@ GameObject:
   - component: {fileID: 3921271517947818698}
   - component: {fileID: 6303182235823088895}
   - component: {fileID: 7489640326813226660}
-  - component: {fileID: 2015210440109119210}
+  - component: {fileID: 6052205628353108515}
   m_Layer: 0
   m_Name: Trash Loading Area
   m_TagString: Untagged
@@ -8732,7 +8732,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2015210440109119210
+--- !u!114 &6052205628353108515
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

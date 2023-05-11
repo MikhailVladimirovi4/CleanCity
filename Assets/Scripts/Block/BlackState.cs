@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Diagnostics.Contracts;
 using UnityEngine;
 
 public class BlackState : MonoBehaviour
@@ -10,17 +11,21 @@ public class BlackState : MonoBehaviour
     [SerializeField] private GameController _controller;
     [SerializeField] private Smell _smell;
 
-    private float _trashCount;
+    private int _trashCount;
     private int _addTrash;
     private bool _addResidents;
     private int _trashMaxIndex;
+    private WaitForSeconds _delay;
+    private Coroutine _addTrashCoroutine;
 
     public int GetResidents() => _residents;
-    public float GetTrashCount() => _trashCount;
+    public int GetTrashCount() => _trashCount;
     public int GetTrashMaxIndex() => _trashMaxIndex;
+    public WaitForSeconds GetDelay() => _delay;
 
     private void OnEnable()
     {
+        _trashMaxIndex = _maxResidents * _timer.GetTimeDay();
         _timer.WeekIsOver += AddResidents;
     }
 
@@ -33,8 +38,8 @@ public class BlackState : MonoBehaviour
     {
         _addTrash = _controller.GetTrashRatePerson();
         _addResidents = true;
-        _trashMaxIndex = _maxResidents * _timer.GetTimeDay();
-        StartCoroutine(AddTrash());
+        _delay = _timer.GetDelay();
+        _addTrashCoroutine = StartCoroutine(AddTrash());
     }
 
     public void AddResidents()
@@ -52,6 +57,14 @@ public class BlackState : MonoBehaviour
         }
     }
 
+    public void RemoveTrash(int index)
+    {
+        if (_trashCount > 0 && _trashCount > index)
+            _trashCount -= index * _timer.GetTimeSpeed();
+        else
+            _trashCount = 0;
+    }
+
     IEnumerator AddTrash()
     {
         while (_timer.IsPlaying)
@@ -66,7 +79,7 @@ public class BlackState : MonoBehaviour
                 _addResidents = false;
             }
 
-            yield return _timer.GetDelay();
+            yield return _delay;
         }
     }
 }
