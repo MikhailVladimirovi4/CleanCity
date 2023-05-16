@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class TrashLoadingArea : MonoBehaviour
+public class TrashLoadingBlock : MonoBehaviour
 {
-    [SerializeField] private BlackState _blockState;
+    [SerializeField] private BlockState _blockState;
 
     private Coroutine _loadingTrash;
 

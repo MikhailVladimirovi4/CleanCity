@@ -2,7 +2,7 @@ using System.Collections;
 using System.Diagnostics.Contracts;
 using UnityEngine;
 
-public class BlackState : MonoBehaviour
+public class BlockState : MonoBehaviour
 {
     [SerializeField] private int _residents;
     [SerializeField] private int _maxResidents;

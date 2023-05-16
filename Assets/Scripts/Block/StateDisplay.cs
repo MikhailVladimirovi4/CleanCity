@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class StateDisplay : MonoBehaviour
 {
-    [SerializeField] private BlackState _blockState;
+    [SerializeField] private BlockState _blockState;
     [SerializeField] private Gradient _vertexColorGradient;
     [SerializeField, Range(0f, 1f)] private float _trashProgress;
 
