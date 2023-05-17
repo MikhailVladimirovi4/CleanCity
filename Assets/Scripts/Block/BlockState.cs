@@ -12,37 +12,34 @@ public class BlockState : MonoBehaviour
     [SerializeField] private Smell _smell;
 
     private int _trashCount;
-    private int _addTrash;
+    private int _personTrashOneTime;
     private bool _addResidents;
     private int _trashMaxIndex;
-    private WaitForSeconds _delay;
-    private Coroutine _addTrashCoroutine;
 
     public int GetResidents() => _residents;
     public int GetTrashCount() => _trashCount;
     public int GetTrashMaxIndex() => _trashMaxIndex;
-    public WaitForSeconds GetDelay() => _delay;
 
     private void OnEnable()
     {
         _trashMaxIndex = _maxResidents * _timer.GetTimeDay();
         _timer.WeekIsOver += AddResidents;
+        _timer.TimeChanged += AddTrash;
     }
 
     private void OnDisable()
     {
         _timer.WeekIsOver -= AddResidents;
+        _timer.TimeChanged -= AddTrash;
     }
 
     private void Start()
     {
-        _addTrash = _controller.GetTrashRatePerson();
+        _personTrashOneTime = _controller.GetTrashRatePerson();
         _addResidents = true;
-        _delay = _timer.GetDelay();
-        _addTrashCoroutine = StartCoroutine(AddTrash());
     }
 
-    public void AddResidents()
+    private void AddResidents()
     {
         if (_addResidents && _residents < _maxResidents)
         {
@@ -65,21 +62,16 @@ public class BlockState : MonoBehaviour
             _trashCount = 0;
     }
 
-    IEnumerator AddTrash()
+    private void AddTrash(int timeSpeed)
     {
-        while (_timer.IsPlaying)
+        if (_trashCount < _trashMaxIndex)
         {
-            if (_trashCount < _trashMaxIndex)
-            {
-                _trashCount += _residents * _addTrash * _timer.GetTimeSpeed();
-            }
-            else
-            {
-                _smell.gameObject.SetActive(true);
-                _addResidents = false;
-            }
-
-            yield return _delay;
+            _trashCount += _residents * _personTrashOneTime * timeSpeed;
+        }
+        else
+        {
+            _smell.gameObject.SetActive(true);
+            _addResidents = false;
         }
     }
 }

@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class TimeDisplay : MonoBehaviour
 {
-    [SerializeField] private Timer _timer;
     [SerializeField] private TextMeshPro _time;
 
-    private void FixedUpdate()
+    public void DisplayTime(int days, int hours, int minutes)
     {
-        _time.text = "Δενό " + Convert.ToString(_timer.GetDays()) + "\n" + Convert.ToString(_timer.GetHours()) + ":" + Convert.ToString(_timer.GetMinutes());
+        _time.text = "Δενό " + Convert.ToString(days) + "\n" + Convert.ToString(hours) + ":" + Convert.ToString(minutes);
     }
 }

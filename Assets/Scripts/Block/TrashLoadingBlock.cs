@@ -4,6 +4,7 @@ using UnityEngine;
 public class TrashLoadingBlock : MonoBehaviour
 {
     [SerializeField] private BlockState _blockState;
+    [SerializeField] private Timer _timer;
 
     private Coroutine _loadingTrash;
 
@@ -40,7 +41,8 @@ public class TrashLoadingBlock : MonoBehaviour
                 else
                     track.AddTrash(_blockState.GetTrashCount());
             }
-            yield return _blockState.GetDelay();
+
+            yield return _timer.Delay;
         }
     }
 }

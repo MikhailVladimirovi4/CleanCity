@@ -15,6 +15,7 @@ public class VisorMovement : MonoBehaviour
     [SerializeField] private float _smoothRotate;
     [SerializeField] private int _mouseSensitivity;
     [SerializeField] private int _speedMovement;
+    [SerializeField] private Timer _timer;
 
     private float _rotationX;
     private float _rotationY;

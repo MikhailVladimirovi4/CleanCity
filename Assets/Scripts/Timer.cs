@@ -2,19 +2,23 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
+
 public class Timer : MonoBehaviour
 {
-    [SerializeField] private int _secondsDelay;
-    [SerializeField] private int _timeSpeed;
+    [SerializeField] private TimeDisplay _display;
 
+    private readonly int _secondsDelay = 1;
+    private int _timeSpeed;
     private int _minutes;
     private int _hours;
     private int _days;
-    private readonly int _dayWeek = 7;
+    private readonly int _dayWeek = 1;
     private readonly int _timeDay = 1440;
-    private WaitForSeconds _delay;
+
+    public WaitForSeconds Delay { get; private set; }
 
     public event UnityAction WeekIsOver;
+    public event UnityAction<int> TimeChanged;
     private Coroutine _timeFlow;
 
     public bool IsPlaying { get; private set; }
@@ -26,20 +30,25 @@ public class Timer : MonoBehaviour
 
     public int GetTimeSpeed() => _timeSpeed;
 
-    public WaitForSeconds GetDelay() => _delay;
 
     private void OnEnable()
     {
-        IsPlaying = true;
-        _delay = new WaitForSeconds(_secondsDelay);
+        Delay = new WaitForSeconds(_secondsDelay);
     }
 
     private void Start()
     {
+        _timeSpeed = _secondsDelay;
+        IsPlaying = true;
         _timeFlow = StartCoroutine(TimeFlow());
     }
 
-    private void FixedUpdate()
+    public void StartGame(int speedModifer)
+    {
+        _timeSpeed = speedModifer;
+    }
+
+    private void CountTime()
     {
         if (_minutes >= 60)
         {
@@ -64,7 +73,11 @@ public class Timer : MonoBehaviour
         while (IsPlaying)
         {
             _minutes += _secondsDelay * _timeSpeed;
-            yield return _delay;
+            CountTime();
+            _display.DisplayTime(_days, _hours, _minutes);
+            TimeChanged?.Invoke(_timeSpeed);
+
+            yield return Delay;
         }
     }
 }
