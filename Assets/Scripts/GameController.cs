@@ -4,6 +4,8 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private int _trashRatePersonPerTime;
     [SerializeField] private StartGameInfo _startGameInfo;
+    [SerializeField] private Office _office;
+    [SerializeField] private Timer _timer;
 
     public int GetTrashRatePerson() => _trashRatePersonPerTime;
 
@@ -16,5 +18,7 @@ public class GameController : MonoBehaviour
     {
         Time.timeScale = 1;
         _startGameInfo.gameObject.SetActive(false);
+        _office.gameObject.SetActive(true);
+        _timer.gameObject.SetActive(true);
     }
 }

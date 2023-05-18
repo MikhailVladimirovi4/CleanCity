@@ -31,7 +31,7 @@ public class Timer : MonoBehaviour
     public int GetTimeSpeed() => _timeSpeed;
 
 
-    private void OnEnable()
+    private void Awake()
     {
         Delay = new WaitForSeconds(_secondsDelay);
     }
