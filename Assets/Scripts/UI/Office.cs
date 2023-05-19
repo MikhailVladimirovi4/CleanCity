@@ -1,18 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Office : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Text _coin;
+    [SerializeField] private Text _reputation;
+    [SerializeField] private Text _garageLevel;
+    [SerializeField] private Text _parkingPlace;
+    [SerializeField] private Text _freeParkingPlace;
+    [SerializeField] private Text _trashTrack;
+    [SerializeField] private Text _freeTrashTrack;
+    [SerializeField] private Wallet _wallet;
+
+    private void OnEnable()
     {
-        
+        GetParametrs();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void GetParametrs()
     {
-        
+        _coin.text = Convert.ToString(_wallet.Coints);
+    }
+
+    private void OnDisable()
+    {
     }
 }

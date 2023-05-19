@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
     [SerializeField] private TimeDisplay _display;
 
     private readonly int _secondsDelay = 1;
-    private int _timeSpeed;
+    private int _speedTime;
     private int _minutes;
     private int _hours;
     private int _days;
@@ -28,7 +28,7 @@ public class Timer : MonoBehaviour
     public int GetDays() => _days;
     public int GetTimeDay() => _timeDay;
 
-    public int GetTimeSpeed() => _timeSpeed;
+    public int GetTimeSpeed() => _speedTime;
 
 
     private void Awake()
@@ -38,14 +38,14 @@ public class Timer : MonoBehaviour
 
     private void Start()
     {
-        _timeSpeed = _secondsDelay;
+        _speedTime = _secondsDelay;
         IsPlaying = true;
         _timeFlow = StartCoroutine(TimeFlow());
     }
 
-    public void StartGame(int speedModifer)
+    public void SetSpeedTime(int speedModifer)
     {
-        _timeSpeed = speedModifer;
+        _speedTime = speedModifer;
     }
 
     private void CountTime()
@@ -72,10 +72,10 @@ public class Timer : MonoBehaviour
     {
         while (IsPlaying)
         {
-            _minutes += _secondsDelay * _timeSpeed;
+            _minutes += _secondsDelay * _speedTime;
             CountTime();
             _display.DisplayTime(_days, _hours, _minutes);
-            TimeChanged?.Invoke(_timeSpeed);
+            TimeChanged?.Invoke(_speedTime);
 
             yield return Delay;
         }
