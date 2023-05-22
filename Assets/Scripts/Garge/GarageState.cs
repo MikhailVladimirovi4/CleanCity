@@ -14,13 +14,11 @@ public class GarageState : MonoBehaviour
 
     public int Level { get; private set; }
     private TrackPark _trackPark;
-    private int _maxParcingPlace;
 
     private void Start()
     {
         Level = 0;
         _trackPark = GetComponent<TrackPark>();
-        _maxParcingPlace = _trackPark.GetMaxPlace;
     }
 
     public void UpLevel()

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class GameController : MonoBehaviour
     [SerializeField] private Wallet _wallet;
     [SerializeField] private Timer _timer;
     [SerializeField] private int _startingCoins;
+    [SerializeField] private Button _openGarage;
+    [SerializeField] private int _trachTrackPrice;
+    [SerializeField] private int _parkingPlacePrice;
+    [SerializeField] private int _upLevelGaragePrice;
 
     public int GetTrashRatePerson() => _trashRatePersonPerTime;
 
@@ -24,5 +29,6 @@ public class GameController : MonoBehaviour
         _startGameInfo.gameObject.SetActive(false);
         _office.gameObject.SetActive(true);
         _timer.gameObject.SetActive(true);
+        _openGarage.gameObject.SetActive(false);
     }
 }

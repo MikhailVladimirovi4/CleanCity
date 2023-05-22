@@ -4,33 +4,12 @@ using UnityEngine;
 public class TrackPark : MonoBehaviour
 {
     [SerializeField] private Transform _parking;
-
-    private List<TrashTrack> _tracks;
-    private Place[] _places;
-
-    private void OnEnable()
-    {
-        _places = new Place[_parking.childCount];
-    }
-
-    public int GetMaxPlace => _places.Length;
-
-    public int GetPlace()
-    {
-        int number = 0;
-
-        foreach (Place place in _places)
-        {
-            if (place.gameObject.activeSelf)
-                number++;
-        }
-
-        return number;
-    }
+    [SerializeField] private List<TrashTrack> _tracks;
+    [SerializeField] private List<Place> _places;
 
     public void AddPlace()
     {
-        if ( GetPlace() < _places.Length + 1)
+        if (GetPlaceCount() < _places.Count)
         {
             foreach (Place place in _places)
             {
@@ -41,5 +20,31 @@ public class TrackPark : MonoBehaviour
                 }
             }
         }
+    }
+
+    public int GetPlaceCount()
+    {
+        int count = 0;
+
+        foreach (Place place in _places)
+        {
+            if (place.gameObject.activeSelf)
+                count++;
+        }
+
+        return count;
+    }
+
+    public int GetTrackCount()
+    {
+        int count = 0;
+
+        foreach (TrashTrack track in _tracks)
+        {
+            if (track.gameObject.activeSelf)
+                count++;
+        }
+
+        return count;
     }
 }

@@ -18,6 +18,11 @@ public class TrashTrack : MonoBehaviour
     public int GetCurrentTrash() => _currentTrash;
     public int GetLoadingSpeed() => _loadingSpeed;
 
+    private void Awake()
+    {
+        this.gameObject.SetActive(false);
+    }
+
     public void AddTrash(int addTrash)
     {
         if (_currentTrash < _cargoSize)

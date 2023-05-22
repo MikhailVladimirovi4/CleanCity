@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class Office : MonoBehaviour
 {
@@ -14,65 +12,47 @@ public class Office : MonoBehaviour
     [SerializeField] private Text _trashTrack;
     [SerializeField] private Text _freeTrashTrack;
     [SerializeField] private Wallet _wallet;
-    [SerializeField] private List<Place> _places;
+    [SerializeField] private BayInfo _bayInfo;
+    [SerializeField] private TrackPark _trackPark;
 
-    private List<TrashTrack> _tracks = new List<TrashTrack>();
     private int _reputation = 0;
-
 
 
     private void OnEnable()
     {
         UpdateValues();
+        _bayInfo.gameObject.SetActive(false);
+
     }
 
     private void OnDisable()
     {
+
     }
 
     public void UpLevel()
     {
-        Debug.Log("поднять уровень");
+        _bayInfo.gameObject.SetActive(true);
+        _bayInfo.DisplayInfo("Поздравляю! \n Гараж преобразован. Теперь он вмещает больше мусоровозов.");
     }
 
     public void AddTrack()
     {
-        Debug.Log("поднять track");
+        _bayInfo.gameObject.SetActive(true);
+        _bayInfo.DisplayInfo("By Track.");
     }
 
     public void AddPlace()
     {
-        Debug.Log("поднять place");
+        _bayInfo.gameObject.SetActive(true);
+        _bayInfo.DisplayInfo("BayPlace.");
     }
 
     private void UpdateValues()
     {
         _coin.text = Convert.ToString(_wallet.Coints);
-        _parkingPlace.text = Convert.ToString(GetPlaceCount());
-        _trashTrack.text = Convert.ToString(GetTrackCount());
+        _parkingPlace.text = Convert.ToString(_trackPark.GetPlaceCount());
+        _trashTrack.text = Convert.ToString(_trackPark.GetTrackCount());
         _reputationValue.text = Convert.ToString(_reputation);
-    }
-
-    private int GetPlaceCount()
-    {
-        int count = 0;
-
-        foreach (Place place in _places)
-        {
-            if (place.gameObject.activeSelf)
-                count++;
-        }
-
-        return count;
-    }
-
-    private int GetTrackCount()
-    {
-        int count = 0;
-
-        foreach (TrashTrack track in _tracks)
-            count++;
-
-        return count;
     }
 }
