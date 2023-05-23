@@ -9,7 +9,7 @@ public class BlockState : MonoBehaviour
     [SerializeField] private int _minResidents;
     [SerializeField] private Timer _timer;
     [SerializeField] private GameController _controller;
-    [SerializeField] private Smell _smell;
+    [SerializeField] private Smoke _smoke;
 
     private int _trashCount;
     private int _personTrashOneTime;
@@ -70,7 +70,7 @@ public class BlockState : MonoBehaviour
         }
         else
         {
-            _smell.gameObject.SetActive(true);
+            _smoke.gameObject.SetActive(true);
             _addResidents = false;
         }
     }

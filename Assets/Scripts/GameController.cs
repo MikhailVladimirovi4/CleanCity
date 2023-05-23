@@ -8,13 +8,17 @@ public class GameController : MonoBehaviour
     [SerializeField] private Office _office;
     [SerializeField] private Wallet _wallet;
     [SerializeField] private Timer _timer;
-    [SerializeField] private int _startingCoins;
     [SerializeField] private Button _openGarage;
+    [SerializeField] private int _startingCoins;
     [SerializeField] private int _trachTrackPrice;
     [SerializeField] private int _parkingPlacePrice;
     [SerializeField] private int _upLevelGaragePrice;
+    [SerializeField] private Button _offSoundButton;
 
     public int GetTrashRatePerson() => _trashRatePersonPerTime;
+    public int TrachTrackPrice() => _trachTrackPrice;
+    public int ParkingPlaceprice() => _parkingPlacePrice;
+    public int UpLevelGaragePrice => _parkingPlacePrice;
 
     private void Awake()
     {
@@ -30,5 +34,6 @@ public class GameController : MonoBehaviour
         _office.gameObject.SetActive(true);
         _timer.gameObject.SetActive(true);
         _openGarage.gameObject.SetActive(false);
+        _offSoundButton.gameObject.SetActive(true);
     }
 }

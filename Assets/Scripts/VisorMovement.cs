@@ -15,7 +15,6 @@ public class VisorMovement : MonoBehaviour
     [SerializeField] private float _smoothRotate;
     [SerializeField] private int _mouseSensitivity;
     [SerializeField] private int _speedMovement;
-    [SerializeField] private Timer _timer;
 
     private float _rotationX;
     private float _rotationY;
@@ -23,13 +22,32 @@ public class VisorMovement : MonoBehaviour
     private float _moveZ;
     private CharacterController _visor;
     private Vector3 _moveDirection;
+    private bool _isOpenOffice;
+    private Transform _startTransform;
 
     private void OnEnable()
     {
         _visor = GetComponent<CharacterController>();
+        _startTransform = GetComponent<Transform>();
+        Debug.Log(gameObject.transform);
+        _isOpenOffice = true;
     }
 
     private void Update()
+    {
+        if (!_isOpenOffice)
+            ChangeTransform();
+    }
+
+    public void BanMove() => _isOpenOffice = true;
+    public void AllowMove() => _isOpenOffice = false;
+    public void ResetPosition()
+    {
+        gameObject.transform.position = _startTransform.position;
+        gameObject.transform.rotation = _startTransform.rotation;
+    }
+
+    private void ChangeTransform()
     {
         if (Input.GetMouseButton(1))
         {

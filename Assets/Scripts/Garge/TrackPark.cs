@@ -6,6 +6,12 @@ public class TrackPark : MonoBehaviour
     [SerializeField] private Transform _parking;
     [SerializeField] private List<TrashTrack> _tracks;
     [SerializeField] private List<Place> _places;
+    [SerializeField] private TrashTrack _track;
+
+    private void OnEnable()
+    {
+        CreateTrack();
+    }
 
     public void AddPlace()
     {
@@ -46,5 +52,15 @@ public class TrackPark : MonoBehaviour
         }
 
         return count;
+    }
+
+    private void CreateTrack()
+    {
+        for (int i = 0; i < _places.Count; i++)
+        {
+            Instantiate(_track, _places[i].transform.position, Quaternion.identity);
+            _tracks.Add(_track);
+            _track.gameObject.SetActive(false);
+        }
     }
 }
