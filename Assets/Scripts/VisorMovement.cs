@@ -29,7 +29,6 @@ public class VisorMovement : MonoBehaviour
     {
         _visor = GetComponent<CharacterController>();
         _startTransform = GetComponent<Transform>();
-        Debug.Log(gameObject.transform);
         _isOpenOffice = true;
     }
 

@@ -35,7 +35,7 @@ public class BlockState : MonoBehaviour
 
     private void Start()
     {
-        _personTrashOneTime = _controller.GetTrashRatePerson();
+        _personTrashOneTime = _controller.GetTrashRatePerson;
         _addResidents = true;
     }
 

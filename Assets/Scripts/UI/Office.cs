@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -51,7 +52,6 @@ public class Office : MonoBehaviour
             }
             else
             {
-                _garageLevel.text = "MAX";
                 text = "Уровень станции максимальный";
             }
         }
@@ -62,20 +62,67 @@ public class Office : MonoBehaviour
 
     public void AddTrack()
     {
+        string text;
 
+        if (_wallet.Coints < _gameController.TrachTrackPrice)
+        {
+            text = "Недостаточно средств для приобретения мусоровоза.";
+        }
+        else
+        {
+            if (_trackPark.CurrentCountTrack == _trackPark.MaxCountPlace)
+            {
+                text = "Гараж максимально укомплектован техникой.";
+            }
+            else
+            {
+                if (_trackPark.CurrentCountTrack < _trackPark.CurrentCountPlace)
+                {
+                    _wallet.RemoveCoins(_gameController.TrachTrackPrice);
+                    _trackPark.AddTrashTrack();
+                    text = "Мусоровоз доставлен в гараж.";
+                }
+                else
+                {
+                    text = "Оборудуйте дополнительно место парковки.";
+                }
+            }
+        }
+        UpdateValues();
+        DisplayRezultAction(text);
     }
 
     public void AddPlace()
     {
+        string text;
 
+        if (_wallet.Coints < _gameController.ParkingPlacePrice)
+        {
+            text = "Недостаточно средств на расширение парковки.";
+        }
+        else
+        {
+            if (_trackPark.CurrentCountPlace < _trackPark.MaxCountPlace)
+            {
+                _wallet.RemoveCoins(_gameController.ParkingPlacePrice);
+                _trackPark.AddPlace();
+                text = "Открыто дополнительное место парковки.";
+            }
+            else
+            {
+                text = "Открыты все места на парковке.";
+            }
+        }
+        UpdateValues();
+        DisplayRezultAction(text);
     }
 
     private void UpdateValues()
     {
         _coin.text = Convert.ToString(_wallet.Coints);
         _reputationValue.text = Convert.ToString(_reputation);
-        _parkingPlace.text = Convert.ToString(_trackPark.GetPlaceCount());
-        _trashTrack.text = Convert.ToString(_trackPark.GetTrackCount());
+        _parkingPlace.text = Convert.ToString(_trackPark.CurrentCountPlace);
+        _trashTrack.text = Convert.ToString(_trackPark.CurrentCountTrack);
 
         if (_garageState.Level == _garageState.MaxLevelGarage)
             _garageLevel.text = "MAX";

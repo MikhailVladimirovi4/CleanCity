@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TrashTrack : MonoBehaviour
@@ -13,14 +11,17 @@ public class TrashTrack : MonoBehaviour
 
     private int _currentTrash;
     private Transform _targetMove;
+    private Vector3 _startPosition;
+    private readonly float _biasPozitionY = 0.5f;
 
-    public int GetCargoSize() => _cargoSize;
-    public int GetCurrentTrash() => _currentTrash;
-    public int GetLoadingSpeed() => _loadingSpeed;
+    public int GetCargoSize => _cargoSize;
+    public int GetCurrentTrash => _currentTrash;
+    public int GetLoadingSpeed => _loadingSpeed;
 
-    private void Awake()
+    private void OnEnable()
     {
-        this.gameObject.SetActive(false);
+        _startPosition = new Vector3(transform.position.x, transform.position.y + _biasPozitionY, transform.position.z);
+        transform.position = _startPosition;
     }
 
     public void AddTrash(int addTrash)

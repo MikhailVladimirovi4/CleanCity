@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,59 +9,43 @@ public class TrackPark : MonoBehaviour
     [SerializeField] private List<Place> _places;
     [SerializeField] private TrashTrack _track;
 
-    private void OnEnable()
-    {
-        CreateTrack();
-    }
+    public int CurrentCountPlace { get; private set; }
+    public int CurrentCountTrack { get; private set; }
+    public int MaxCountPlace { get; private set; }
 
-    public void AddPlace()
+
+    private void Start()
     {
-        if (GetPlaceCount() < _places.Count)
+        CurrentCountPlace = 0;
+        CurrentCountTrack = 0;
+        MaxCountPlace = _places.Count;
+    }
+    public void AddTrashTrack()
+    {
+        foreach (Place place in _places)
         {
-            foreach (Place place in _places)
+            if (place.gameObject.activeSelf && !place.IsBusy)
             {
-                if (!place.gameObject.activeSelf)
-                {
-                    place.gameObject.SetActive(true);
-                    return;
-                }
+                TrashTrack track = Instantiate(_track, place.transform.position, Quaternion.identity);
+                _tracks.Add(track);
+                CurrentCountTrack++;
+                place.Take();
+                return;
+
             }
         }
     }
 
-    public int GetPlaceCount()
+    public void AddPlace()
     {
-        int count = 0;
-
         foreach (Place place in _places)
         {
-            if (place.gameObject.activeSelf)
-                count++;
-        }
-
-        return count;
-    }
-
-    public int GetTrackCount()
-    {
-        int count = 0;
-
-        foreach (TrashTrack track in _tracks)
-        {
-            if (track.gameObject.activeSelf)
-                count++;
-        }
-
-        return count;
-    }
-
-    private void CreateTrack()
-    {
-        for (int i = 0; i < _places.Count; i++)
-        {
-            Instantiate(_track, _places[i].transform.position, Quaternion.identity);
-            _tracks.Add(_track);
-            _track.gameObject.SetActive(false);
+            if (!place.gameObject.activeSelf)
+            {
+                place.gameObject.SetActive(true);
+                CurrentCountPlace++;
+                return;
+            }
         }
     }
 }

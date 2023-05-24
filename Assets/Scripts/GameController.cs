@@ -15,10 +15,10 @@ public class GameController : MonoBehaviour
     [SerializeField] private int _upLevelGaragePrice;
     [SerializeField] private Button _offSoundButton;
 
-    public int GetTrashRatePerson() => _trashRatePersonPerTime;
-    public int TrachTrackPrice() => _trachTrackPrice;
-    public int ParkingPlaceprice() => _parkingPlacePrice;
-    public int UpLevelGaragePrice => _parkingPlacePrice;
+    public int GetTrashRatePerson => _trashRatePersonPerTime;
+    public int TrachTrackPrice => _trachTrackPrice;
+    public int ParkingPlacePrice => _parkingPlacePrice;
+    public int UpLevelGaragePrice => _upLevelGaragePrice;
 
     private void Awake()
     {
