@@ -10,11 +10,14 @@ public class BlockState : MonoBehaviour
     [SerializeField] private Timer _timer;
     [SerializeField] private GameController _controller;
     [SerializeField] private Smoke _smoke;
+    [SerializeField] private StateDisplay _stateDisplay;
 
     private int _trashCount;
     private int _personTrashOneTime;
     private bool _addResidents;
     private int _trashMaxIndex;
+    
+    public bool IsIncluded { get; private set; }
 
     public int GetResidents() => _residents;
     public int GetTrashCount() => _trashCount;
@@ -37,6 +40,22 @@ public class BlockState : MonoBehaviour
     {
         _personTrashOneTime = _controller.GetTrashRatePerson;
         _addResidents = true;
+        IsIncluded = false;
+        _stateDisplay.gameObject.SetActive(false);
+    }
+
+    public void Includ()
+    {
+        IsIncluded = true;
+        _stateDisplay.gameObject.SetActive(true);
+    }
+
+    public void RemoveTrash(int index)
+    {
+        if (_trashCount > 0 && _trashCount > index)
+            _trashCount -= index * _timer.GetTimeSpeed();
+        else
+            _trashCount = 0;
     }
 
     private void AddResidents()
@@ -54,24 +73,19 @@ public class BlockState : MonoBehaviour
         }
     }
 
-    public void RemoveTrash(int index)
-    {
-        if (_trashCount > 0 && _trashCount > index)
-            _trashCount -= index * _timer.GetTimeSpeed();
-        else
-            _trashCount = 0;
-    }
-
     private void AddTrash(int timeSpeed)
     {
-        if (_trashCount < _trashMaxIndex)
+        if (IsIncluded)
         {
-            _trashCount += _residents * _personTrashOneTime * timeSpeed;
-        }
-        else
-        {
-            _smoke.gameObject.SetActive(true);
-            _addResidents = false;
+            if (_trashCount < _trashMaxIndex)
+            {
+                _trashCount += _residents * _personTrashOneTime * timeSpeed;
+            }
+            else
+            {
+                _smoke.gameObject.SetActive(true);
+                _addResidents = false;
+            }
         }
     }
 }
