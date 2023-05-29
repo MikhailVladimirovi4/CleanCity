@@ -17,17 +17,17 @@ public class StateDisplay : MonoBehaviour
     private void Start()
     {
         _textMeshPro = GetComponent<TextMeshPro>();
-        _trasherOneCent = _blockState.GetTrashMaxIndex() / _perCent;
+        _trasherOneCent = _blockState.TrashMaxIndex / _perCent;
     }
 
     private void FixedUpdate()
     {
         if (_trashProgress < _perCent)
-            _trashProgress = _blockState.GetTrashCount() / _trasherOneCent;
+            _trashProgress = _blockState.TrashCount / _trasherOneCent;
         else
             _trashProgress = _perCent;
      
-        _textMeshPro.text = "Жителей " + Convert.ToString(_blockState.GetResidents()) + ". Мусорный бак заполнен на " + Convert.ToString(_trashProgress) + "%.";
+        _textMeshPro.text = "Жителей " + Convert.ToString(_blockState.Residents) + ". Мусорный бак заполнен на " + Convert.ToString(_trashProgress) + "%.";
         _textMeshPro.color = _vertexColorGradient.Evaluate(_trashProgress / _perCent);
     }
 }

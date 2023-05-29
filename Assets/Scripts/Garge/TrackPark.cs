@@ -48,4 +48,23 @@ public class TrackPark : MonoBehaviour
             }
         }
     }
+
+    public void SendTrashTrack(AreaState target)
+    { 
+
+    }
+
+    public bool IsFreeTrack()
+    {
+        bool isFreeTrack = false;
+
+        foreach( TrashTrack track in _tracks)
+        {
+            if(track.IsFree)
+            {
+                isFreeTrack = true;
+            }
+        }
+        return isFreeTrack;
+    }
 }

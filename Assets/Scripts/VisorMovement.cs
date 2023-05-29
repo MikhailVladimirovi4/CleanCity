@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(CharacterController))]
 
@@ -23,12 +24,17 @@ public class VisorMovement : MonoBehaviour
     private CharacterController _visor;
     private Vector3 _moveDirection;
     private bool _isOpenOffice;
-    private Transform _startTransform;
+    private Vector3 _startPosition;
+    private float _startRotateX;
+    private float _startRotateY = 180f;
+    private float _startRotateZ;
 
     private void OnEnable()
     {
         _visor = GetComponent<CharacterController>();
-        _startTransform = GetComponent<Transform>();
+        _startPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        _startRotateX = transform.rotation.x;
+        _startRotateZ = transform.rotation.z;
         _isOpenOffice = true;
     }
 
@@ -42,8 +48,8 @@ public class VisorMovement : MonoBehaviour
     public void AllowMove() => _isOpenOffice = false;
     public void ResetPosition()
     {
-        gameObject.transform.position = _startTransform.position;
-        gameObject.transform.rotation = _startTransform.rotation;
+        transform.position = _startPosition;
+        transform.rotation = Quaternion.Euler(_startRotateX, _startRotateY, _startRotateZ);
     }
 
     private void ChangeTransform()
@@ -76,6 +82,6 @@ public class VisorMovement : MonoBehaviour
         _rotationX += Input.GetAxis("Mouse X") * Time.deltaTime * _mouseSensitivity;
         _rotationY += Input.GetAxis("Mouse Y") * Time.deltaTime * _mouseSensitivity;
         _rotationY = Mathf.Clamp(_rotationY, _minRotationX, _maxRotationX);
-        this.transform.rotation = Quaternion.Euler(-_rotationY, _rotationX, 0f);
+        transform.rotation = Quaternion.Euler(-_rotationY, _rotationX, 0f);
     }
 }

@@ -30,16 +30,16 @@ public class TrashLoadingBlock : MonoBehaviour
 
     IEnumerator LoadingTrash(TrashTrack track)
     {
-        while (track.GetCargoSize > track.GetCurrentTrash)
+        while (track.CargoSize > track.CurrentTrash)
         {
-            if (_blockState.GetTrashCount() > 0)
+            if (_blockState.TrashCount > 0)
             {
-                _blockState.RemoveTrash(track.GetLoadingSpeed);
+                _blockState.RemoveTrash(track.LoadingSpeed);
 
-                if (_blockState.GetTrashCount() > track.GetLoadingSpeed)
-                    track.AddTrash(track.GetLoadingSpeed);
+                if (_blockState.TrashCount > track.LoadingSpeed)
+                    track.AddTrash(track.LoadingSpeed);
                 else
-                    track.AddTrash(_blockState.GetTrashCount());
+                    track.AddTrash(_blockState.TrashCount);
             }
 
             yield return _timer.Delay;

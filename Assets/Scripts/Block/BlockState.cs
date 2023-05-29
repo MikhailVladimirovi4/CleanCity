@@ -16,12 +16,14 @@ public class BlockState : MonoBehaviour
     private int _personTrashOneTime;
     private bool _addResidents;
     private int _trashMaxIndex;
-    
-    public bool IsIncluded { get; private set; }
+    private int _startSupportBlock = 50;
 
-    public int GetResidents() => _residents;
-    public int GetTrashCount() => _trashCount;
-    public int GetTrashMaxIndex() => _trashMaxIndex;
+    public bool IsIncluded { get; private set; }
+    public int PublicSupportBlock { get; private set; }
+
+    public int Residents => _residents;
+    public int TrashCount => _trashCount;
+    public int TrashMaxIndex => _trashMaxIndex;
 
     private void OnEnable()
     {
@@ -42,6 +44,7 @@ public class BlockState : MonoBehaviour
         _addResidents = true;
         IsIncluded = false;
         _stateDisplay.gameObject.SetActive(false);
+        PublicSupportBlock = _startSupportBlock;
     }
 
     public void Includ()
@@ -63,6 +66,11 @@ public class BlockState : MonoBehaviour
         if (_addResidents && _residents < _maxResidents)
         {
             _residents++;
+            PublicSupportBlock += 10;
+
+            if (PublicSupportBlock > _controller.PerCent)
+                PublicSupportBlock = _controller.PerCent;
+
         }
         else
         {
@@ -70,6 +78,10 @@ public class BlockState : MonoBehaviour
                 _residents--;
 
             _addResidents = true;
+            PublicSupportBlock -= 10;
+
+            if (PublicSupportBlock < 0)
+                PublicSupportBlock = 0;
         }
     }
 
