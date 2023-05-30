@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,12 +11,17 @@ public class Office : MonoBehaviour
     [SerializeField] private Text _freeParkingPlace;
     [SerializeField] private Text _trashTrack;
     [SerializeField] private Text _freeTrashTrack;
+    [SerializeField] private Text _areasServiceCount;
+    [SerializeField] private Text _population;
+    [SerializeField] private Text _trashPerCent;
 
     [SerializeField] private Wallet _wallet;
     [SerializeField] private BayInfo _bayInfo;
     [SerializeField] private TrackPark _trackPark;
     [SerializeField] private GameController _gameController;
     [SerializeField] private GarageState _garageState;
+    [SerializeField] private AreasService _areasService;
+
 
     private int _reputation = 0;
 
@@ -28,12 +32,6 @@ public class Office : MonoBehaviour
         _bayInfo.gameObject.SetActive(false);
 
     }
-
-    private void OnDisable()
-    {
-
-    }
-
     public void UpLevel()
     {
         string text;
@@ -117,12 +115,16 @@ public class Office : MonoBehaviour
         DisplayRezultAction(text);
     }
 
-    private void UpdateValues()
+    public void UpdateValues()
     {
         _coin.text = Convert.ToString(_wallet.Coints);
         _reputationValue.text = Convert.ToString(_reputation);
         _parkingPlace.text = Convert.ToString(_trackPark.CurrentCountPlace);
         _trashTrack.text = Convert.ToString(_trackPark.CurrentCountTrack);
+        _areasServiceCount.text = Convert.ToString(_areasService.AreasCount);
+        _population.text = Convert.ToString(_areasService.GetPopulation());
+        _trashPerCent.text = Convert.ToString(_areasService.GetTrashCount()) + "%";
+
 
         if (_garageState.Level == _garageState.MaxLevelGarage)
             _garageLevel.text = "MAX";

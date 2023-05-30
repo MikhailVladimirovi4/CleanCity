@@ -35,8 +35,6 @@ public class AreaInfoPanel : MonoBehaviour
             _collectTrashText.text = "собрать";
         else
             _collectTrashText.text = "нет машин";
-
-
     }
 
     public void CollectTrash()
