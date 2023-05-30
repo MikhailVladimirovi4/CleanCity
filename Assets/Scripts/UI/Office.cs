@@ -117,13 +117,18 @@ public class Office : MonoBehaviour
 
     public void UpdateValues()
     {
+        int places = _trackPark.CurrentCountPlace;
+        int tracks = _trackPark.CurrentCountTrack;
+
         _coin.text = Convert.ToString(_wallet.Coints);
         _reputationValue.text = Convert.ToString(_reputation);
-        _parkingPlace.text = Convert.ToString(_trackPark.CurrentCountPlace);
-        _trashTrack.text = Convert.ToString(_trackPark.CurrentCountTrack);
+        _parkingPlace.text = Convert.ToString(places);
+        _trashTrack.text = Convert.ToString(tracks);
         _areasServiceCount.text = Convert.ToString(_areasService.AreasCount);
         _population.text = Convert.ToString(_areasService.GetPopulation());
         _trashPerCent.text = Convert.ToString(_areasService.GetTrashCount()) + "%";
+        _freeParkingPlace.text = Convert.ToString(places - tracks);
+        _freeTrashTrack.text = Convert.ToString(_trackPark.CountFreeTrack());
 
 
         if (_garageState.Level == _garageState.MaxLevelGarage)

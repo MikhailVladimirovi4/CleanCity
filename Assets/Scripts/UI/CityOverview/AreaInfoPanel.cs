@@ -31,7 +31,7 @@ public class AreaInfoPanel : MonoBehaviour
         _corentTrash.text = Convert.ToString(_area.CurrentTrash) + "%";
         _numberPeople.text = Convert.ToString(_area.NumberPeople);
 
-        if (_trackPark.IsFreeTrack())
+        if (_trackPark.IsFreeTrack() != null)
             _collectTrashText.text = "собрать";
         else
             _collectTrashText.text = "нет машин";

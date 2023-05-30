@@ -54,17 +54,29 @@ public class TrackPark : MonoBehaviour
 
     }
 
-    public bool IsFreeTrack()
+    public TrashTrack IsFreeTrack()
     {
-        bool isFreeTrack = false;
-
         foreach( TrashTrack track in _tracks)
         {
             if(track.IsFree)
             {
-                isFreeTrack = true;
+                return track;
             }
         }
-        return isFreeTrack;
+        return null;
+    }
+
+    public int CountFreeTrack()
+    {
+        int freeTrack = 0;
+
+        foreach (TrashTrack track in _tracks)
+        {
+            if (track.IsFree)
+            {
+                freeTrack++;
+            }
+        }
+        return freeTrack;
     }
 }
