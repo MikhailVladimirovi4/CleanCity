@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BayInfo : MonoBehaviour
+public class Info : MonoBehaviour
 {
     [SerializeField] private Text _text;
     [SerializeField] private Button _ok;

@@ -16,7 +16,7 @@ public class Office : MonoBehaviour
     [SerializeField] private Text _trashPerCent;
 
     [SerializeField] private Wallet _wallet;
-    [SerializeField] private BayInfo _bayInfo;
+    [SerializeField] private Info _info;
     [SerializeField] private TrackPark _trackPark;
     [SerializeField] private GameController _gameController;
     [SerializeField] private GarageState _garageState;
@@ -29,9 +29,14 @@ public class Office : MonoBehaviour
     private void OnEnable()
     {
         UpdateValues();
-        _bayInfo.gameObject.SetActive(false);
-
+        _info.gameObject.SetActive(false);
     }
+
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void UpLevel()
     {
         string text;
@@ -82,7 +87,7 @@ public class Office : MonoBehaviour
                 }
                 else
                 {
-                    text = "Оборудуйте дополнительно место парковки.";
+                    text = "Оборудуйте дополнительное место парковки.";
                 }
             }
         }
@@ -132,15 +137,20 @@ public class Office : MonoBehaviour
 
 
         if (_garageState.Level == _garageState.MaxLevelGarage)
+        {
             _garageLevel.text = "MAX";
+            _garageLevel.fontSize = 50;
+        }
         else
+        {
             _garageLevel.text = Convert.ToString(_garageState.Level);
+        }
     }
 
     private void DisplayRezultAction(string text)
     {
         UpdateValues();
-        _bayInfo.gameObject.SetActive(true);
-        _bayInfo.DisplayInfo(text);
+        _info.gameObject.SetActive(true);
+        _info.DisplayInfo(text);
     }
 }

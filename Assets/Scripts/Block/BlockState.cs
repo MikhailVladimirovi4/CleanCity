@@ -24,6 +24,7 @@ public class BlockState : MonoBehaviour
     public int Residents => _residents;
     public int TrashCount => _trashCount;
     public int TrashMaxIndex => _trashMaxIndex;
+    public WaitForSeconds TimerDelay => _timer.Delay;
 
     private void OnEnable()
     {
@@ -53,12 +54,21 @@ public class BlockState : MonoBehaviour
         _stateDisplay.gameObject.SetActive(true);
     }
 
-    public void RemoveTrash(int index)
+    public void RemoveTrash(int loadingSpeed, out int sendTrashCount,out bool isSendTrash)
     {
-        if (_trashCount > 0 && _trashCount > index)
-            _trashCount -= index * _timer.GetTimeSpeed();
+        isSendTrash = true;
+
+        if (_trashCount < loadingSpeed * _timer.SpeedTime)
+        {
+            sendTrashCount = _trashCount;
+            isSendTrash = false;
+        }
         else
-            _trashCount = 0;
+        {
+            sendTrashCount = loadingSpeed * _timer.SpeedTime;
+        }
+
+        _trashCount -= sendTrashCount;
     }
 
     private void AddResidents()

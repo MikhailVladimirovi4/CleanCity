@@ -8,11 +8,11 @@ public class TrackPark : MonoBehaviour
     [SerializeField] private List<TrashTrack> _tracks;
     [SerializeField] private List<Place> _places;
     [SerializeField] private TrashTrack _track;
+    [SerializeField] private Transform _startWorkPosition;
 
     public int CurrentCountPlace { get; private set; }
     public int CurrentCountTrack { get; private set; }
     public int MaxCountPlace { get; private set; }
-
 
     private void Start()
     {
@@ -31,7 +31,6 @@ public class TrackPark : MonoBehaviour
                 CurrentCountTrack++;
                 place.Take();
                 return;
-
             }
         }
     }
@@ -49,16 +48,16 @@ public class TrackPark : MonoBehaviour
         }
     }
 
-    public void SendTrashTrack(AreaState target)
-    { 
-
+    public void SendTrashTrack(AreaState area)
+    {
+        IsFreeTrack().Work(area, _startWorkPosition);
     }
 
     public TrashTrack IsFreeTrack()
     {
-        foreach( TrashTrack track in _tracks)
+        foreach (TrashTrack track in _tracks)
         {
-            if(track.IsFree)
+            if (track.IsFree)
             {
                 return track;
             }

@@ -10,6 +10,7 @@ public class AreaInfoPanel : MonoBehaviour
     [SerializeField] private Text _numberPeople;
     [SerializeField] private TMP_Text _collectTrashText;
     [SerializeField] private TrackPark _trackPark;
+    [SerializeField] private Button _collectTrash;
 
     private AreaState _area;
 
@@ -22,6 +23,12 @@ public class AreaInfoPanel : MonoBehaviour
     {
         _area = area;
         UpdateData();
+
+        if (_trackPark.CountFreeTrack() > 0)
+            _collectTrash.gameObject.SetActive(true);
+        else
+            _collectTrash.gameObject.SetActive(false);
+
     }
 
     public void UpdateData()
@@ -30,11 +37,6 @@ public class AreaInfoPanel : MonoBehaviour
         _publicSupport.text = Convert.ToString(_area.PublicSupport) + "%";
         _corentTrash.text = Convert.ToString(_area.CurrentTrash) + "%";
         _numberPeople.text = Convert.ToString(_area.NumberPeople);
-
-        if (_trackPark.IsFreeTrack() != null)
-            _collectTrashText.text = "собрать";
-        else
-            _collectTrashText.text = "нет машин";
     }
 
     public void CollectTrash()

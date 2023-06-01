@@ -28,7 +28,7 @@ public class Timer : MonoBehaviour
     public int GetDays() => _days;
     public int GetTimeDay() => _timeDay;
 
-    public int GetTimeSpeed() => _speedTime;
+    public int SpeedTime => _speedTime;
 
 
     private void Awake()

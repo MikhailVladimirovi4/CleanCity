@@ -4,6 +4,7 @@ using UnityEngine;
 public class AreaState : MonoBehaviour
 {
     [SerializeField] private BlockState[] _blocks;
+    [SerializeField] private Transform _collectStartPosition;
 
     private int PerCent = 100;
     private int _trashIndexBlocksPerCent;
