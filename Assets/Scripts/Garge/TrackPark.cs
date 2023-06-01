@@ -9,6 +9,7 @@ public class TrackPark : MonoBehaviour
     [SerializeField] private List<Place> _places;
     [SerializeField] private TrashTrack _track;
     [SerializeField] private Transform _startWorkPosition;
+    [SerializeField] private Timer _timer;
 
     public int CurrentCountPlace { get; private set; }
     public int CurrentCountTrack { get; private set; }
@@ -28,6 +29,7 @@ public class TrackPark : MonoBehaviour
             {
                 TrashTrack track = Instantiate(_track, place.transform.position, Quaternion.identity);
                 _tracks.Add(track);
+                track.InitTimer(_timer);
                 CurrentCountTrack++;
                 place.Take();
                 return;

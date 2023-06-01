@@ -1,12 +1,10 @@
 using System.Collections;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class SpaceCargo : MonoBehaviour
 {
-    [SerializeField] private int _cargoSize;
-    [SerializeField] private int _loadingSpeed;
-
+    private int _cargoSize;
+    private int _loadingSpeed;
     private int _currentTrash;
     private bool _isLoadingTrash;
     private Coroutine _loadingTrash;
@@ -21,6 +19,9 @@ public class SpaceCargo : MonoBehaviour
         Full = false;
         _isLoadingTrash = false;
     }
+
+    public void SetCargoSize(int spaceCargo) => _cargoSize = spaceCargo;
+    public void SetLoadingSpeed(int loadingSpeed) => _loadingSpeed = loadingSpeed;
 
     private void RemoveTrash()
     {

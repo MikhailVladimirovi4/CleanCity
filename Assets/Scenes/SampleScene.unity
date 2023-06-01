@@ -8360,6 +8360,10 @@ PrefabInstance:
       propertyPath: _startTargetWork
       value: 
       objectReference: {fileID: 1321676441}
+    - target: {fileID: 2903430130822231695, guid: 72d1191cc927bdd4d90a3ab2fc274783, type: 3}
+      propertyPath: _startWorkPosition
+      value: 
+      objectReference: {fileID: 1321676441}
     - target: {fileID: 6429595057055804342, guid: 72d1191cc927bdd4d90a3ab2fc274783, type: 3}
       propertyPath: m_LocalPosition.x
       value: -411.66

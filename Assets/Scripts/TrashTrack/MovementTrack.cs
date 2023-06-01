@@ -1,15 +1,19 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Navigator))]
+[RequireComponent(typeof(TrashTrack))]
 
 public class MovementTrack : MonoBehaviour
 {
     private Transform _target;
     private Navigator _navigator;
+    private TrashTrack _track;
     private float _speed;
 
-    private void Start()
+    private void OnEnable()
     {
+        _navigator = GetComponent<Navigator>();
+        _track = GetComponent<TrashTrack>();
         _target = null;
     }
 
@@ -17,10 +21,10 @@ public class MovementTrack : MonoBehaviour
     {
         if (_target != null)
         {
-            if (transform.position.x != _target.position.x && transform.position.z != _target.position.z)
+            if (transform.position != _target.position)
                 ChangePosition();
             else
-                _target = _navigator.GetTarget(_target.name);
+                _target = _navigator.NextTarget;
         }
     }
 
@@ -29,6 +33,6 @@ public class MovementTrack : MonoBehaviour
 
     private void ChangePosition()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _target.position, Time.deltaTime * _speed); 
+        transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * _track.SpeedTime * Time.deltaTime);
     }
 }
