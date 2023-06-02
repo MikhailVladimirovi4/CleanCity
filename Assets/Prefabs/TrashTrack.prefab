@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5921b9d0d7c02644e9c054565545b9b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _speed: 3
   _maxFuelTank: 0
   _fuelConsumption: 0
   _cargoSize: 30000
@@ -254,6 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d092de2b24ed314f8fe7795a7c72df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collectTrashPoints: []
 --- !u!114 &6585207875591916696
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class BlockState : MonoBehaviour
     [SerializeField] private GameController _controller;
     [SerializeField] private Smoke _smoke;
     [SerializeField] private StateDisplay _stateDisplay;
+    [SerializeField] private TrashLoadingBlock _trashLoadingBlock;
 
     private int _trashCount;
     private int _personTrashOneTime;
@@ -24,6 +25,7 @@ public class BlockState : MonoBehaviour
     public int Residents => _residents;
     public int TrashCount => _trashCount;
     public int TrashMaxIndex => _trashMaxIndex;
+    public Transform TransformLoadingBlock => _trashLoadingBlock.transform;
     public WaitForSeconds TimerDelay => _timer.Delay;
 
     private void OnEnable()

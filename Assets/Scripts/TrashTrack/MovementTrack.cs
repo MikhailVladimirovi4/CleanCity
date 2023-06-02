@@ -22,17 +22,20 @@ public class MovementTrack : MonoBehaviour
         if (_target != null)
         {
             if (transform.position != _target.position)
-                ChangePosition();
+            {
+                transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * _track.SpeedTime * Time.deltaTime);
+            }
             else
-                _target = _navigator.NextTarget;
+            {
+                _target = _navigator.NextTarget();
+            }
+        }
+        else
+        {
+            _track.TagFree();
         }
     }
 
     public void SetSpeed(float speed) => _speed = speed;
     public void SetTarget(Transform target) => _target = target;
-
-    private void ChangePosition()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * _track.SpeedTime * Time.deltaTime);
-    }
 }

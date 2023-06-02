@@ -4,7 +4,7 @@ using UnityEngine;
 public class AreaState : MonoBehaviour
 {
     [SerializeField] private BlockState[] _blocks;
-    [SerializeField] private Transform _collectStartPosition;
+    [SerializeField] private Transform[] _routeCollectPoints;
 
     private int PerCent = 100;
     private int _trashIndexBlocksPerCent;
@@ -12,6 +12,9 @@ public class AreaState : MonoBehaviour
     public int PublicSupport { get; private set; }
     public int CurrentTrash { get; private set; }
     public int NumberPeople { get; private set; }
+
+    public int RouteMapPoints => _routeCollectPoints.Length;
+    
 
     private void Start()
     {
@@ -31,6 +34,8 @@ public class AreaState : MonoBehaviour
             block.Includ();
         }
     }
+
+    public Transform GetRouteCollectPoint(int index) => _routeCollectPoints[index];
 
     public void GetData()
     {

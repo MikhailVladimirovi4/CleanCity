@@ -12,21 +12,17 @@ public class TrashTrack : MonoBehaviour
     [SerializeField] private int _cargoSize;
     [SerializeField] private int _loadingSpeed;
 
-    private Vector3 _parkingPosition;
-    private readonly float _biasPozitionY = 0.5f;
     private MovementTrack _movement;
     private SpaceCargo _spaceCargo;
     private Navigator _navigator;
     private Timer _timer;
 
-    public bool IsFree { get; private set; }
+    [SerializeField] public bool IsFree { get; private set; }
 
     public int SpeedTime => _timer.SpeedTime;
 
     private void OnEnable()
     {
-        _parkingPosition = new Vector3(transform.position.x, transform.position.y + _biasPozitionY, transform.position.z);
-        transform.position = _parkingPosition;
         IsFree = true;
         _movement = GetComponent<MovementTrack>();
         _movement.SetSpeed(_speed);
@@ -36,9 +32,12 @@ public class TrashTrack : MonoBehaviour
         _navigator = GetComponent<Navigator>();
     }
 
-    public void InitTimer(Timer timer)
+    public void TagFree() => IsFree = true;
+
+    public void Init(Timer timer, Transform[] removeTrashPoints)
     {
         _timer = timer;
+        _navigator.CreateRemoveTrashRoute(removeTrashPoints);
     }
 
     public void Work(AreaState area, Transform startPosition)
