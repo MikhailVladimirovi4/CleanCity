@@ -3,30 +3,29 @@ using UnityEngine;
 
 public class SpaceCargo : MonoBehaviour
 {
-    private int _cargoSize;
-    private int _loadingSpeed;
-    private int _currentTrash;
+    [SerializeField]  private int _cargoSize;
+    [SerializeField]  private int _loadingSpeed;
+    [SerializeField] private int _currentTrash;
     private bool _isLoadingTrash;
+    private bool _isFull;
     private Coroutine _loadingTrash;
 
-    public bool Full { get; private set; }
+    public bool IsFull => _isFull;
+    public bool IsLoadingtrash => _isLoadingTrash;
 
     public int CargoSize => _cargoSize;
     public int CurrentTrash => _currentTrash;
 
     private void OnEnable()
     {
-        Full = false;
+        _isFull = false;
         _isLoadingTrash = false;
     }
-
-    public void SetCargoSize(int spaceCargo) => _cargoSize = spaceCargo;
-    public void SetLoadingSpeed(int loadingSpeed) => _loadingSpeed = loadingSpeed;
 
     private void RemoveTrash()
     {
         _currentTrash = 0;
-        Full = false;
+        _isFull = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,6 +36,11 @@ public class SpaceCargo : MonoBehaviour
                 StopCoroutine(_loadingTrash);
 
             _loadingTrash = StartCoroutine(LoadingTrash(trashLoadingBlock));
+        }
+
+        if (other.gameObject.TryGetComponent(out TrashDump trashDump))
+        {
+            RemoveTrash();
         }
     }
 
@@ -53,7 +57,7 @@ public class SpaceCargo : MonoBehaviour
     {
         _isLoadingTrash = true;
 
-        while (!Full && _isLoadingTrash)
+        while (!_isFull && _isLoadingTrash)
         {
             if (trashLoadingBlock.BlockTrashCount > 0)
             {
@@ -62,9 +66,11 @@ public class SpaceCargo : MonoBehaviour
                 _isLoadingTrash = isLoadingTrash;
             }
 
-            Full = (_cargoSize < _currentTrash);
+            _isFull = (_cargoSize < _currentTrash);
 
-            yield return trashLoadingBlock.Timerdelay;
+            yield return trashLoadingBlock.TimeDelay;
         }
+
+        _isLoadingTrash = false;
     }
 }

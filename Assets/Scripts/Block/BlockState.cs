@@ -26,7 +26,7 @@ public class BlockState : MonoBehaviour
     public int TrashCount => _trashCount;
     public int TrashMaxIndex => _trashMaxIndex;
     public Transform TransformLoadingBlock => _trashLoadingBlock.transform;
-    public WaitForSeconds TimerDelay => _timer.Delay;
+    public WaitForSeconds TimeDelay => _timer.Delay;
 
     private void OnEnable()
     {

@@ -6,7 +6,7 @@ public class TrashLoadingBlock : MonoBehaviour
 
     public int BlockTrashCount => _blockState.TrashCount;
 
-    public WaitForSeconds Timerdelay => _blockState.TimerDelay;
+    public WaitForSeconds TimeDelay => _blockState.TimeDelay;
 
     public void BlockRemoveTrash(int loadingSpeed, out int sendTrashCount, out bool isSendTrash)
     {

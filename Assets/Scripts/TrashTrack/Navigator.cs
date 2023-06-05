@@ -1,44 +1,68 @@
 using UnityEngine;
 
+[RequireComponent(typeof(SpaceCargo))]
+
 public class Navigator : MonoBehaviour
 {
     private Transform[] _removeTrashPoints;
     private Transform[] _collectTrashPoints;
-    private Transform _startPosition;
-    private int routeLeg;
+    private Transform _parkingPosition;
+    private SpaceCargo _spaceCargo;
+    private int _routeStep = 0;
+    private TrashTrack _track;
 
-    public Transform NextTarget()
+    private void Start()
+    {
+        _track = GetComponent<TrashTrack>();
+        _spaceCargo = GetComponent<SpaceCargo>();
+    }
+
+    public void SetParkingPosition(Transform parkingPosition) => _parkingPosition = parkingPosition;
+
+    public Transform GetTarget()
     {
         Transform nextTarget;
 
-        if (routeLeg < _collectTrashPoints.Length)
+        if (_routeStep < _collectTrashPoints.Length)
         {
-            nextTarget = _collectTrashPoints[routeLeg];
-        }
-        else
-        {
-            if (routeLeg < _collectTrashPoints.Length + _removeTrashPoints.Length)
-            {
-                nextTarget = _removeTrashPoints[routeLeg - _collectTrashPoints.Length];
-            }
-            else
-            {
-                if (gameObject.transform != _startPosition)
-                    nextTarget = _startPosition;
-                else
-                    nextTarget = null;
-            }
+                nextTarget = _collectTrashPoints[_routeStep];
+
+            if (_spaceCargo.IsFull)
+                _routeStep = _collectTrashPoints.Length - 1;
         }
 
-        routeLeg++;
+        else
+        {
+            if (_routeStep < _collectTrashPoints.Length + _removeTrashPoints.Length)
+            {
+                nextTarget = _removeTrashPoints[_routeStep - _collectTrashPoints.Length];
+            }
+
+            else
+            {
+                if (gameObject.transform.position != _parkingPosition.position)
+                {
+                    nextTarget = _parkingPosition;
+                }
+
+                else
+                {
+                    nextTarget = null;
+                    _routeStep = 0;
+
+                    if (!_track.IsFree)
+                        _track.TagFree();
+                }
+            }
+        }
+        _routeStep++;
 
         return nextTarget;
     }
 
     public void CreateRoute(AreaState area)
     {
-        _startPosition = gameObject.transform;
-        routeLeg = 0;
+        _routeStep = 0;
 
         _collectTrashPoints = new Transform[area.RouteMapPoints];
 

@@ -2,18 +2,22 @@ using UnityEngine;
 
 [RequireComponent(typeof(Navigator))]
 [RequireComponent(typeof(TrashTrack))]
+[RequireComponent(typeof(SpaceCargo))]
 
 public class MovementTrack : MonoBehaviour
 {
+    [SerializeField] private float _speed;
+
     private Transform _target;
     private Navigator _navigator;
     private TrashTrack _track;
-    private float _speed;
+    private SpaceCargo _spaceCargo;
 
     private void OnEnable()
     {
         _navigator = GetComponent<Navigator>();
         _track = GetComponent<TrashTrack>();
+        _spaceCargo = GetComponent<SpaceCargo>();
         _target = null;
     }
 
@@ -21,21 +25,19 @@ public class MovementTrack : MonoBehaviour
     {
         if (_target != null)
         {
-            if (transform.position != _target.position)
+            if (!_spaceCargo.IsLoadingtrash)
             {
-                transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * _track.SpeedTime * Time.deltaTime);
+                if (transform.position != _target.position)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * _track.SpeedTime * Time.deltaTime);
+                }
+                else
+                {
+                    _target = _navigator.GetTarget();
+                }
             }
-            else
-            {
-                _target = _navigator.NextTarget();
-            }
-        }
-        else
-        {
-            _track.TagFree();
         }
     }
 
-    public void SetSpeed(float speed) => _speed = speed;
     public void SetTarget(Transform target) => _target = target;
 }

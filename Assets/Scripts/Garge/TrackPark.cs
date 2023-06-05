@@ -30,7 +30,7 @@ public class TrackPark : MonoBehaviour
             {
                 TrashTrack track = Instantiate(_track, place.transform.position, Quaternion.identity);
                 _tracks.Add(track);
-                track.Init(_timer, _removeTrashPoints);
+                track.Init(_timer, _removeTrashPoints, place.transform);
                 CurrentCountTrack++;
                 place.Take();
                 return;

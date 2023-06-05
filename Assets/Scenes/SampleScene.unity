@@ -10071,25 +10071,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6883463945723345793, guid: 81adbfb679bfbbe4cbe1496f69b57e83, type: 3}
-      propertyPath: _collectTrashPoints.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6883463945723345793, guid: 81adbfb679bfbbe4cbe1496f69b57e83, type: 3}
-      propertyPath: _collectTrashPoints.Array.data[0]
-      value: 
-      objectReference: {fileID: 656787643}
-    - target: {fileID: 6883463945723345793, guid: 81adbfb679bfbbe4cbe1496f69b57e83, type: 3}
-      propertyPath: _collectTrashPoints.Array.data[1]
-      value: 
-      objectReference: {fileID: 731950696}
-    - target: {fileID: 6883463945723345793, guid: 81adbfb679bfbbe4cbe1496f69b57e83, type: 3}
-      propertyPath: _collectTrashPoints.Array.data[2]
-      value: 
-      objectReference: {fileID: 656787643}
-    - target: {fileID: 6883463945723345793, guid: 81adbfb679bfbbe4cbe1496f69b57e83, type: 3}
-      propertyPath: _collectTrashPoints.Array.data[3]
-      value: 
-      objectReference: {fileID: 1321676441}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81adbfb679bfbbe4cbe1496f69b57e83, type: 3}
