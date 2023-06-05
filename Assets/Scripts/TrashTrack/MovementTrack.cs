@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(Navigator))]
 [RequireComponent(typeof(TrashTrack))]
@@ -27,6 +28,8 @@ public class MovementTrack : MonoBehaviour
         {
             if (!_spaceCargo.IsLoadingtrash)
             {
+                transform.rotation = Quaternion.LookRotation(_target.position - transform.position, Vector3.up);
+
                 if (transform.position != _target.position)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * _track.SpeedTime * Time.deltaTime);

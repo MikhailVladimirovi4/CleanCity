@@ -5,16 +5,14 @@ public class SpaceCargo : MonoBehaviour
 {
     [SerializeField]  private int _cargoSize;
     [SerializeField]  private int _loadingSpeed;
-    [SerializeField] private int _currentTrash;
+
+    private int _currentTrash;
     private bool _isLoadingTrash;
     private bool _isFull;
     private Coroutine _loadingTrash;
 
     public bool IsFull => _isFull;
     public bool IsLoadingtrash => _isLoadingTrash;
-
-    public int CargoSize => _cargoSize;
-    public int CurrentTrash => _currentTrash;
 
     private void OnEnable()
     {
