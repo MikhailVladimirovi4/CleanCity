@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Navigator : MonoBehaviour
 {
-    private Transform[] _removeTrashPoints;
-    private Transform[] _collectTrashPoints;
-    private Transform _parkingPosition;
+    [SerializeField] private Transform[] _removeTrashPoints;
+    [SerializeField] private Transform[] _collectTrashPoints;
+    [SerializeField] private Transform[] _leavingAreaPonts;
+    [SerializeField] private Transform _parkingPosition;
     private SpaceCargo _spaceCargo;
-    private int _routeStep = 0;
+    [SerializeField] private int _routeStep = 0;
     private TrashTrack _track;
+    private readonly int _areaReachStep = 3;
 
     private void Start()
     {
@@ -25,7 +27,7 @@ public class Navigator : MonoBehaviour
 
         if (_routeStep < _collectTrashPoints.Length)
         {
-                nextTarget = _collectTrashPoints[_routeStep];
+            nextTarget = _collectTrashPoints[_routeStep];
 
             if (_spaceCargo.IsFull)
                 _routeStep = _collectTrashPoints.Length - 1;
@@ -33,29 +35,46 @@ public class Navigator : MonoBehaviour
 
         else
         {
-            if (_routeStep < _collectTrashPoints.Length + _removeTrashPoints.Length)
+            if (_routeStep < _collectTrashPoints.Length + _leavingAreaPonts.Length)
             {
-                nextTarget = _removeTrashPoints[_routeStep - _collectTrashPoints.Length];
+                nextTarget = _leavingAreaPonts[_routeStep - _collectTrashPoints.Length];
             }
 
             else
             {
-                if (gameObject.transform.position != _parkingPosition.position)
+                if (_routeStep < (_collectTrashPoints.Length + _leavingAreaPonts.Length + _removeTrashPoints.Length))
                 {
-                    nextTarget = _parkingPosition;
+                    nextTarget = _removeTrashPoints[_routeStep - _collectTrashPoints.Length - _leavingAreaPonts.Length];
                 }
 
                 else
                 {
-                    nextTarget = null;
-                    _routeStep = 0;
+                    if (gameObject.transform.position != _parkingPosition.position)
+                    {
+                        nextTarget = _parkingPosition;
+                    }
 
-                    if (!_track.IsFree)
-                        _track.TagFree();
+                    else
+                    {
+                        _collectTrashPoints = null;
+                        _leavingAreaPonts = null;
+                        _routeStep = 0;
+
+                        if (!_track.IsFree)
+                            _track.TagFree();
+
+                        return null;
+                    }
                 }
             }
         }
         _routeStep++;
+
+        if (_routeStep == _areaReachStep)
+            _spaceCargo.SetReachedArea();
+
+        if (_routeStep > _collectTrashPoints.Length)
+            _spaceCargo.SetLiavingArea();
 
         return nextTarget;
     }
@@ -64,10 +83,14 @@ public class Navigator : MonoBehaviour
     {
         _routeStep = 0;
 
-        _collectTrashPoints = new Transform[area.RouteMapPoints];
+        _collectTrashPoints = new Transform[area.RouteCollectPoints];
+        _leavingAreaPonts = new Transform[area.RouteLeavingAreaPoints];
 
         for (int i = 0; i < _collectTrashPoints.Length; i++)
             _collectTrashPoints[i] = area.GetRouteCollectPoint(i);
+
+        for (int i = 0; i < _leavingAreaPonts.Length; i++)
+            _leavingAreaPonts[i] = area.GetRouteLeavingAreaPoint(i);
     }
 
     public void CreateRemoveTrashRoute(Transform[] removeTrashPoints)

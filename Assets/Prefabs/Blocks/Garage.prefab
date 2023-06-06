@@ -6402,7 +6402,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2434831824996794276}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -6703,7 +6703,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2864687319724877700}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -7534,7 +7534,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3944305280431576714}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -8027,7 +8027,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4481012659353850619}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -8232,7 +8232,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4674878505293001865}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -8629,7 +8629,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4849789750921191349}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -9218,7 +9218,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5608865234551166275}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -10664,11 +10664,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e640173bc760045823b41b5ce0e854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _routePointsTrashDump:
-  - {fileID: 7067253298114654598}
-  - {fileID: 8831514232581526236}
-  - {fileID: 7067253298114654598}
-  - {fileID: 6429595057055804342}
 --- !u!1 &7093146621941131712
 GameObject:
   m_ObjectHideFlags: 0
@@ -11102,7 +11097,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7605471045540145396}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -12130,6 +12125,8 @@ GameObject:
   - component: {fileID: 742015018549034216}
   - component: {fileID: 2903430130822231695}
   - component: {fileID: 1642499332}
+  - component: {fileID: 1582191190603949703}
+  - component: {fileID: 4081502616310135551}
   m_Layer: 0
   m_Name: Garage
   m_TagString: Untagged
@@ -12203,8 +12200,13 @@ MonoBehaviour:
   - {fileID: 2948185992708385473}
   - {fileID: 611741502419118024}
   - {fileID: 4156289959940084251}
-  _track: {fileID: 87894720215516427, guid: 81adbfb679bfbbe4cbe1496f69b57e83, type: 3}
+  _track: {fileID: 2112058986758121673, guid: 95a5731d58f07ff4daf4666f2f1918a8, type: 3}
   _startWorkPosition: {fileID: 6429595057055804342}
+  _removeTrashPoints:
+  - {fileID: 7067253298114654598}
+  - {fileID: 8831514232581526236}
+  - {fileID: 7067253298114654598}
+  - {fileID: 6429595057055804342}
   _timer: {fileID: 0}
 --- !u!82 &1642499332
 AudioSource:
@@ -12302,6 +12304,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1582191190603949703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8569862198205037298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e754951a1c8b84a84e8d2740828e87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _areaService: {fileID: 0}
+  _onButton: {fileID: 0}
+  _offButton: {fileID: 0}
+--- !u!114 &4081502616310135551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8569862198205037298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07f262bc10389e84b8657dc4a245470d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8569862198242920044
 GameObject:
   m_ObjectHideFlags: 0

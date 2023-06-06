@@ -5,6 +5,7 @@ public class AreaState : MonoBehaviour
 {
     [SerializeField] private BlockState[] _blocks;
     [SerializeField] private Transform[] _routeCollectPoints;
+    [SerializeField] private Transform[] _routeLeavingArea;
 
     private int PerCent = 100;
     private int _trashIndexBlocksPerCent;
@@ -13,8 +14,10 @@ public class AreaState : MonoBehaviour
     public int CurrentTrash { get; private set; }
     public int NumberPeople { get; private set; }
 
-    public int RouteMapPoints => _routeCollectPoints.Length;
-    
+    public int RouteCollectPoints => _routeCollectPoints.Length;
+    public int RouteLeavingAreaPoints => _routeLeavingArea.Length;
+
+
 
     private void Start()
     {
@@ -36,6 +39,7 @@ public class AreaState : MonoBehaviour
     }
 
     public Transform GetRouteCollectPoint(int index) => _routeCollectPoints[index];
+    public Transform GetRouteLeavingAreaPoint(int index) => _routeLeavingArea[index];
 
     public void GetData()
     {

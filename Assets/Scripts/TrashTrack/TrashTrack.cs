@@ -8,7 +8,7 @@ public class TrashTrack : MonoBehaviour
     private MovementTrack _movement;
     private Navigator _navigator;
     private Timer _timer;
-    private bool _isFree;
+    [SerializeField] private bool _isFree;
 
     public bool IsFree => _isFree;
     public int SpeedTime => _timer.SpeedTime;

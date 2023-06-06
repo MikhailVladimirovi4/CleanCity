@@ -9,7 +9,7 @@ public class MovementTrack : MonoBehaviour
 {
     [SerializeField] private float _speed;
 
-    private Transform _target;
+   [SerializeField] private Transform _target;
     private Navigator _navigator;
     private TrashTrack _track;
     private SpaceCargo _spaceCargo;

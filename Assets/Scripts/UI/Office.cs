@@ -14,7 +14,6 @@ public class Office : MonoBehaviour
     [SerializeField] private Text _areasServiceCount;
     [SerializeField] private Text _population;
     [SerializeField] private Text _trashPerCent;
-
     [SerializeField] private Wallet _wallet;
     [SerializeField] private Info _info;
     [SerializeField] private TrackPark _trackPark;
@@ -22,19 +21,22 @@ public class Office : MonoBehaviour
     [SerializeField] private GarageState _garageState;
     [SerializeField] private AreasService _areasService;
 
-
     private int _reputation = 0;
-
 
     private void OnEnable()
     {
-        UpdateValues();
         _info.gameObject.SetActive(false);
     }
 
     private void Start()
     {
         gameObject.SetActive(false);
+    }
+
+    private void FixedUpdate()
+    {
+        if(gameObject.activeSelf)
+            UpdateValues();
     }
 
     public void UpLevel()
@@ -58,7 +60,6 @@ public class Office : MonoBehaviour
                 text = "Уровень станции максимальный";
             }
         }
-
         UpdateValues();
         DisplayRezultAction(text);
     }

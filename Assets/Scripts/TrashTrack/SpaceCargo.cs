@@ -7,8 +7,9 @@ public class SpaceCargo : MonoBehaviour
     [SerializeField]  private int _loadingSpeed;
 
     private int _currentTrash;
-    private bool _isLoadingTrash;
+    [SerializeField] private bool _isLoadingTrash;
     private bool _isFull;
+    private bool _isReachedArea;
     private Coroutine _loadingTrash;
 
     public bool IsFull => _isFull;
@@ -18,7 +19,11 @@ public class SpaceCargo : MonoBehaviour
     {
         _isFull = false;
         _isLoadingTrash = false;
+        _isReachedArea = false;
     }
+
+    public void SetReachedArea() => _isReachedArea = true;
+    public void SetLiavingArea() => _isReachedArea = false;
 
     private void RemoveTrash()
     {
@@ -28,12 +33,15 @@ public class SpaceCargo : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.TryGetComponent(out TrashLoadingBlock trashLoadingBlock))
+        if (_isReachedArea)
         {
-            if (_loadingTrash != null)
-                StopCoroutine(_loadingTrash);
+            if (other.gameObject.TryGetComponent(out TrashLoadingBlock trashLoadingBlock))
+            {
+                if (_loadingTrash != null)
+                    StopCoroutine(_loadingTrash);
 
-            _loadingTrash = StartCoroutine(LoadingTrash(trashLoadingBlock));
+                _loadingTrash = StartCoroutine(LoadingTrash(trashLoadingBlock));
+            }
         }
 
         if (other.gameObject.TryGetComponent(out TrashDump trashDump))
