@@ -8,7 +8,8 @@ public class TrashTrack : MonoBehaviour
     private MovementTrack _movement;
     private Navigator _navigator;
     private Timer _timer;
-    [SerializeField] private bool _isFree;
+    private bool _isFree;
+    private AreaState _area = new AreaState();
 
     public bool IsFree => _isFree;
     public int SpeedTime => _timer.SpeedTime;
@@ -22,6 +23,8 @@ public class TrashTrack : MonoBehaviour
 
     public void TagFree()
     {
+        _area.OffCollectionProgress();
+        _area = null;
         _isFree = true;
     }
 
@@ -34,8 +37,10 @@ public class TrashTrack : MonoBehaviour
 
     public void Work(AreaState area, Transform startPosition)
     {
+        _area = area;
         _isFree = false;
-        _navigator.CreateRoute(area);
+        _area.OnCollectionProgress();
+        _navigator.CreateRoute(_area);
         _movement.SetTarget(startPosition);
     }
 }

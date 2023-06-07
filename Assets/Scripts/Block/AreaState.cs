@@ -13,15 +13,15 @@ public class AreaState : MonoBehaviour
     public int PublicSupport { get; private set; }
     public int CurrentTrash { get; private set; }
     public int NumberPeople { get; private set; }
+    public bool IsCollectionProgress { get; private set; }
 
     public int RouteCollectPoints => _routeCollectPoints.Length;
     public int RouteLeavingAreaPoints => _routeLeavingArea.Length;
 
-
-
     private void Start()
     {
         PublicSupport = 0;
+        IsCollectionProgress = false;
         int trashMaxIndexBlocks = 0;
 
         foreach (BlockState block in _blocks)
@@ -30,6 +30,11 @@ public class AreaState : MonoBehaviour
         _trashIndexBlocksPerCent = trashMaxIndexBlocks / PerCent;
     }
 
+    public Transform GetRouteCollectPoint(int index) => _routeCollectPoints[index];
+    public Transform GetRouteLeavingAreaPoint(int index) => _routeLeavingArea[index];
+    public void OnCollectionProgress() => IsCollectionProgress = true;
+    public void OffCollectionProgress() => IsCollectionProgress = false;
+
     public void OnService()
     {
         foreach (BlockState block in _blocks)
@@ -37,9 +42,6 @@ public class AreaState : MonoBehaviour
             block.Includ();
         }
     }
-
-    public Transform GetRouteCollectPoint(int index) => _routeCollectPoints[index];
-    public Transform GetRouteLeavingAreaPoint(int index) => _routeLeavingArea[index];
 
     public void GetData()
     {

@@ -16,7 +16,7 @@ public class AreasService : MonoBehaviour
     {
         int count = 0;
 
-        foreach(AreaState area in _areas)
+        foreach (AreaState area in _areas)
         {
             area.GetData();
             count += area.NumberPeople;
@@ -40,17 +40,23 @@ public class AreasService : MonoBehaviour
 
     public AreaState GetAreaMaxTrash()
     {
-        AreaState areaMaxTrash = null;
         int trashMaxCount = 0;
+        int index = -1;
 
-        foreach (AreaState area in _areas)
+        for (int i = 0; i < _areas.Count; i++)
         {
-            if(trashMaxCount < area.CurrentTrash)
+            if (!_areas[i].IsCollectionProgress)
             {
-                trashMaxCount = area.CurrentTrash;
-                areaMaxTrash = area;
+                if (trashMaxCount <= _areas[i].CurrentTrash)
+                {
+                    trashMaxCount = _areas[i].CurrentTrash;
+                    index = i;
+                }
             }
         }
-        return areaMaxTrash;
+        if (index < 0)
+            return null;
+        else
+            return _areas[index];
     }
 }

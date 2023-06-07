@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Navigator : MonoBehaviour
 {
-    [SerializeField] private Transform[] _removeTrashPoints;
-    [SerializeField] private Transform[] _collectTrashPoints;
-    [SerializeField] private Transform[] _leavingAreaPonts;
-    [SerializeField] private Transform _parkingPosition;
+    private Transform[] _removeTrashPoints;
+    private Transform[] _collectTrashPoints;
+    private Transform[] _leavingAreaPonts;
+    private Transform _parkingPosition;
     private SpaceCargo _spaceCargo;
-    [SerializeField] private int _routeStep = 0;
+    private int _routeStep = 0;
     private TrashTrack _track;
     private readonly int _areaReachStep = 3;
 
