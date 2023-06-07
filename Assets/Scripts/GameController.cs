@@ -5,7 +5,6 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private int _trashRatePersonPerTime;
     [SerializeField] private StartGameInfo _startGameInfo;
-    [SerializeField] private Office _office;
     [SerializeField] private Wallet _wallet;
     [SerializeField] private Timer _timer;
     [SerializeField] private Button _openGarage;
@@ -33,7 +32,6 @@ public class GameController : MonoBehaviour
         _wallet.AddCoins(_startingCoins);
         Time.timeScale = 1;
         _startGameInfo.gameObject.SetActive(false);
-        _office.gameObject.SetActive(true);
         _timer.gameObject.SetActive(true);
         _openGarage.gameObject.SetActive(false);
         _offSoundButton.gameObject.SetActive(true);

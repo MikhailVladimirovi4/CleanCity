@@ -7,6 +7,8 @@ public class AreasService : MonoBehaviour
 
     public int AreasCount => _areas.Count;
 
+    public AreaState GetArea(int index) => _areas[index];
+
     public void AddArea(AreaState area)
     {
         _areas.Add(area);
@@ -32,31 +34,22 @@ public class AreasService : MonoBehaviour
         foreach (AreaState area in _areas)
         {
             area.GetData();
-            count += area.CurrentTrash;
+            count += area.CurrentTrashPerCent;
         }
 
-        return count;
+        return count / _areas.Count;
     }
 
-    public AreaState GetAreaMaxTrash()
+    public int GetPublicSupport()
     {
-        int trashMaxCount = 0;
-        int index = -1;
+        int count = 0;
 
-        for (int i = 0; i < _areas.Count; i++)
+        foreach (AreaState area in _areas)
         {
-            if (!_areas[i].IsCollectionProgress)
-            {
-                if (trashMaxCount <= _areas[i].CurrentTrash)
-                {
-                    trashMaxCount = _areas[i].CurrentTrash;
-                    index = i;
-                }
-            }
+            area.GetData();
+            count += area.PublicSupport;
         }
-        if (index < 0)
-            return null;
-        else
-            return _areas[index];
+
+        return count / _areas.Count;
     }
 }

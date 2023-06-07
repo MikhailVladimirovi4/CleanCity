@@ -14,28 +14,23 @@ public class Office : MonoBehaviour
     [SerializeField] private Text _areasServiceCount;
     [SerializeField] private Text _population;
     [SerializeField] private Text _trashPerCent;
-    [SerializeField] private Wallet _wallet;
     [SerializeField] private Info _info;
     [SerializeField] private TrackPark _trackPark;
-    [SerializeField] private GameController _gameController;
     [SerializeField] private GarageState _garageState;
     [SerializeField] private AreasService _areasService;
 
-    private int _reputation = 0;
-
-    private void OnEnable()
-    {
-        _info.gameObject.SetActive(false);
-    }
+    private Wallet _wallet;
+    private GameController _gameController;
 
     private void Start()
     {
-        gameObject.SetActive(false);
+        _info.gameObject.SetActive(false);
+        _gameController = GetComponent<GameController>();
+        _wallet = GetComponent<Wallet>();
     }
 
     private void FixedUpdate()
     {
-        if(gameObject.activeSelf)
             UpdateValues();
     }
 
@@ -60,7 +55,6 @@ public class Office : MonoBehaviour
                 text = "Уровень станции максимальный";
             }
         }
-        UpdateValues();
         DisplayRezultAction(text);
     }
 
@@ -92,7 +86,6 @@ public class Office : MonoBehaviour
                 }
             }
         }
-        UpdateValues();
         DisplayRezultAction(text);
     }
 
@@ -117,7 +110,6 @@ public class Office : MonoBehaviour
                 text = "Открыты все места на парковке.";
             }
         }
-        UpdateValues();
         DisplayRezultAction(text);
     }
 
@@ -127,15 +119,18 @@ public class Office : MonoBehaviour
         int tracks = _trackPark.CurrentCountTrack;
 
         _coin.text = Convert.ToString(_wallet.Coints);
-        _reputationValue.text = Convert.ToString(_reputation);
         _parkingPlace.text = Convert.ToString(places);
         _trashTrack.text = Convert.ToString(tracks);
-        _areasServiceCount.text = Convert.ToString(_areasService.AreasCount);
-        _population.text = Convert.ToString(_areasService.GetPopulation());
-        _trashPerCent.text = Convert.ToString(_areasService.GetTrashCount()) + "%";
         _freeParkingPlace.text = Convert.ToString(places - tracks);
         _freeTrashTrack.text = Convert.ToString(_trackPark.CountFreeTrack());
 
+        if (_areasService.AreasCount > 0)
+        {
+            _reputationValue.text = Convert.ToString(_areasService.GetPublicSupport() + "%");
+            _areasServiceCount.text = Convert.ToString(_areasService.AreasCount);
+            _population.text = Convert.ToString(_areasService.GetPopulation());
+            _trashPerCent.text = Convert.ToString(_areasService.GetTrashCount()) + "%";
+        }
 
         if (_garageState.Level == _garageState.MaxLevelGarage)
         {
@@ -150,7 +145,6 @@ public class Office : MonoBehaviour
 
     private void DisplayRezultAction(string text)
     {
-        UpdateValues();
         _info.gameObject.SetActive(true);
         _info.DisplayInfo(text);
     }

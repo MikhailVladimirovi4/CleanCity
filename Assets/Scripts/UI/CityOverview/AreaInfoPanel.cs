@@ -35,7 +35,7 @@ public class AreaInfoPanel : MonoBehaviour
     {
         _area.GetData();
         _publicSupport.text = Convert.ToString(_area.PublicSupport) + "%";
-        _corentTrash.text = Convert.ToString(_area.CurrentTrash) + "%";
+        _corentTrash.text = Convert.ToString(_area.CurrentTrashPerCent) + "%";
         _numberPeople.text = Convert.ToString(_area.NumberPeople);
     }
 

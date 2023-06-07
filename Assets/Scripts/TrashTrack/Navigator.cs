@@ -35,6 +35,8 @@ public class Navigator : MonoBehaviour
 
         else
         {
+            _track.MarkEndCollection();
+
             if (_routeStep < _collectTrashPoints.Length + _leavingAreaPonts.Length)
             {
                 nextTarget = _leavingAreaPonts[_routeStep - _collectTrashPoints.Length];

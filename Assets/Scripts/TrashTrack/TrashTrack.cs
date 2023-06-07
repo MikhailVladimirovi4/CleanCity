@@ -9,7 +9,7 @@ public class TrashTrack : MonoBehaviour
     private Navigator _navigator;
     private Timer _timer;
     private bool _isFree;
-    private AreaState _area = new AreaState();
+    private AreaState _area;
 
     public bool IsFree => _isFree;
     public int SpeedTime => _timer.SpeedTime;
@@ -21,9 +21,13 @@ public class TrashTrack : MonoBehaviour
         _navigator = GetComponent<Navigator>();
     }
 
-    public void TagFree()
+    public void MarkEndCollection()
     {
         _area.OffCollectionProgress();
+    }
+
+    public void TagFree()
+    {
         _area = null;
         _isFree = true;
     }
@@ -39,7 +43,6 @@ public class TrashTrack : MonoBehaviour
     {
         _area = area;
         _isFree = false;
-        _area.OnCollectionProgress();
         _navigator.CreateRoute(_area);
         _movement.SetTarget(startPosition);
     }

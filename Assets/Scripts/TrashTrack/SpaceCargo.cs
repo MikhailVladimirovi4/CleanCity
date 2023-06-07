@@ -7,7 +7,7 @@ public class SpaceCargo : MonoBehaviour
     [SerializeField]  private int _loadingSpeed;
 
     private int _currentTrash;
-    [SerializeField] private bool _isLoadingTrash;
+    private bool _isLoadingTrash;
     private bool _isFull;
     private bool _isReachedArea;
     private Coroutine _loadingTrash;

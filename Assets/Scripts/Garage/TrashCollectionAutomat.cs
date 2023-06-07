@@ -25,12 +25,33 @@ public class TrashCollectionAutomat : MonoBehaviour
         {
             if (_trackParck.IsFreeTrack() != null)
             {
-                AreaState area = _areaService.GetAreaMaxTrash();
+                int index = GetIndexAreaMaxTrash();
 
-                if (area != null)
-                    _trackParck.SendTrashTrack(area);
+                if (index >= 0)
+                {
+                    _areaService.GetArea(index).OnCollectionProgress();
+                    _trackParck.SendTrashTrack(_areaService.GetArea(index));
+                }
             }
         }
+    }
+    private int GetIndexAreaMaxTrash()
+    {
+        int trashMaxCount = 0;
+        int index = -1;
+
+        for (int i = 0; i < _areaService.AreasCount; i++)
+        {
+            if (!_areaService.GetArea(i).IsCollectionProgress)
+            {
+                if (trashMaxCount <= _areaService.GetArea(i).CurrentTrashPerCent)
+                {
+                    trashMaxCount = _areaService.GetArea(i).CurrentTrashPerCent;
+                    index = i;
+                }
+            }
+        }
+        return index;
     }
 
     public void On()

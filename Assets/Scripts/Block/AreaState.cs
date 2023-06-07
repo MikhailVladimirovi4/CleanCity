@@ -7,11 +7,11 @@ public class AreaState : MonoBehaviour
     [SerializeField] private Transform[] _routeCollectPoints;
     [SerializeField] private Transform[] _routeLeavingArea;
 
-    private int PerCent = 100;
+    private readonly int PerCent = 100;
     private int _trashIndexBlocksPerCent;
 
     public int PublicSupport { get; private set; }
-    public int CurrentTrash { get; private set; }
+    public int CurrentTrashPerCent { get; private set; }
     public int NumberPeople { get; private set; }
     public bool IsCollectionProgress { get; private set; }
 
@@ -57,6 +57,18 @@ public class AreaState : MonoBehaviour
         }
 
         PublicSupport = publicSupportblocks / _blocks.Count();
-        CurrentTrash = currentTrashblocks / _trashIndexBlocksPerCent;
+        CurrentTrashPerCent = currentTrashblocks / _trashIndexBlocksPerCent;
+
+        if (CurrentTrashPerCent > 100)
+            CurrentTrashPerCent = 100;
+
+        if (CurrentTrashPerCent < 0)
+            CurrentTrashPerCent = 0;
+
+        if (PublicSupport > 100)
+            PublicSupport = 100;
+
+        if (PublicSupport < 0)
+            PublicSupport = 0;
     }
 }
