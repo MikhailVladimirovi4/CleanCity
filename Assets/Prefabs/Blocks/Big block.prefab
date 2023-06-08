@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98f1cd1c060621c49a2ee49a76fb124e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blockState: {fileID: 9160456002957995725}
+  _blockState: {fileID: 0}
 --- !u!1 &6750317221290871921
 GameObject:
   m_ObjectHideFlags: 0
@@ -5925,7 +5925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb77c9c7e1c2874da7f2684149af797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blockState: {fileID: 9160456002957995725}
+  _blockState: {fileID: 0}
   _vertexColorGradient:
     serializedVersion: 2
     key0: {r: 0.029037304, g: 0.7924528, b: 0, a: 1}
