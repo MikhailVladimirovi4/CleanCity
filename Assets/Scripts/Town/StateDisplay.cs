@@ -22,12 +22,14 @@ public class StateDisplay : MonoBehaviour
 
     private void FixedUpdate()
     {
+        float trashProgress;
+
         if (_trashProgress < _perCent)
-            _trashProgress = _blockState.TrashCount / _trasherOneCent;
+           trashProgress = _blockState.TrashCount / _trasherOneCent;
         else
-            _trashProgress = _perCent;
+            trashProgress = _perCent;
      
-        _textMeshPro.text = "Жителей " + Convert.ToString(_blockState.Residents) + ". Мусорный бак заполнен на " + Convert.ToString(_trashProgress) + "%.";
-        _textMeshPro.color = _vertexColorGradient.Evaluate(_trashProgress / _perCent);
+        _textMeshPro.text = "Жителей " + Convert.ToString(_blockState.Residents) + ". Мусорный бак заполнен на " + Convert.ToString(trashProgress) + "%.";
+        _textMeshPro.color = _vertexColorGradient.Evaluate(trashProgress / _perCent);
     }
 }

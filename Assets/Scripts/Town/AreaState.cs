@@ -23,6 +23,12 @@ public class AreaState : MonoBehaviour
     public int RouteCollectPoints => _routeCollectPoints.Length;
     public int RouteLeavingAreaPoints => _routeLeavingArea.Length;
 
+    public Transform GetRouteCollectPoint(int index) => _routeCollectPoints[index];
+    public Transform GetRouteLeavingAreaPoint(int index) => _routeLeavingArea[index];
+    public void OnCollectionProgress() => IsCollectionProgress = true;
+    public void OffCollectionProgress() => IsCollectionProgress = false;
+
+
     private void Start()
     {
         PublicSupport = 0;
@@ -36,21 +42,18 @@ public class AreaState : MonoBehaviour
         _trashIndexBlocksPerCent = trashMaxIndexBlocks / PerCent;
     }
 
-    public Transform GetRouteCollectPoint(int index) => _routeCollectPoints[index];
-    public Transform GetRouteLeavingAreaPoint(int index) => _routeLeavingArea[index];
-    public void OnCollectionProgress() => IsCollectionProgress = true;
-    public void OffCollectionProgress() => IsCollectionProgress = false;
-    public void CreateContract() => IsContract = true;
-
-    public void OnService()
+    private void FixedUpdate()
     {
-        foreach (BlockState block in _blocks)
-        {
-            block.Includ();
-        }
+        GetData();
     }
 
-    public void GetData()
+    public void CreateContract()
+    {
+        IsContract = true;
+        OnService();
+    }
+
+    private void GetData()
     {
         int publicSupportblocks = 0;
         int currentTrashblocks = 0;
@@ -77,5 +80,13 @@ public class AreaState : MonoBehaviour
 
         if (PublicSupport < 0)
             PublicSupport = 0;
+    }
+
+    private void OnService()
+    {
+        foreach (BlockState block in _blocks)
+        {
+            block.Includ();
+        }
     }
 }

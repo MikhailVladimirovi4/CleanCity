@@ -15,6 +15,7 @@ public class TrackPark : MonoBehaviour
     public int CurrentCountPlace { get; private set; }
     public int CurrentCountTrack { get; private set; }
     public int MaxCountPlace { get; private set; }
+    public bool IsFreeTrack { get; private set; }
 
     private void Start()
     {
@@ -22,6 +23,12 @@ public class TrackPark : MonoBehaviour
         CurrentCountTrack = 0;
         MaxCountPlace = _places.Count;
     }
+
+    private void FixedUpdate()
+    {
+        IsFreeTrack = (GetFreeTrack() != null);
+    }
+
     public void AddTrashTrack()
     {
         foreach (Place place in _places)
@@ -53,10 +60,10 @@ public class TrackPark : MonoBehaviour
 
     public void SendTrashTrack(AreaState area)
     {
-        IsFreeTrack().Work(area, _startWorkPosition);
+        GetFreeTrack().Work(area, _startWorkPosition);
     }
 
-    public TrashTrack IsFreeTrack()
+    public TrashTrack GetFreeTrack()
     {
         foreach (TrashTrack track in _tracks)
         {

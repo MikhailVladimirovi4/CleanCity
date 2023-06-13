@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AreasService : MonoBehaviour
 {
-    private List<AreaState> _areas = new List<AreaState>();
+    [SerializeField] private List<AreaState> _areas = new List<AreaState>();
 
     public int AreasCount => _areas.Count;
 
@@ -20,7 +20,6 @@ public class AreasService : MonoBehaviour
 
         foreach (AreaState area in _areas)
         {
-            area.GetData();
             count += area.NumberPeople;
         }
 
@@ -33,7 +32,6 @@ public class AreasService : MonoBehaviour
 
         foreach (AreaState area in _areas)
         {
-            area.GetData();
             count += area.CurrentTrashPerCent;
         }
 
@@ -46,7 +44,6 @@ public class AreasService : MonoBehaviour
 
         foreach (AreaState area in _areas)
         {
-            area.GetData();
             count += area.PublicSupport;
         }
 

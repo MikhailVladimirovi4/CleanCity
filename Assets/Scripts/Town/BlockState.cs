@@ -17,7 +17,9 @@ public class BlockState : MonoBehaviour
     private int _personTrashOneTime;
     private bool _addResidents;
     private int _trashMaxIndex;
-    private int _startSupportBlock = 50;
+    private readonly int _startSupportBlock = 50;
+    private readonly int _stepAddSupportPeople = 2;
+    private readonly int _stepRemoveSupportPeople = 10;
 
     public bool IsIncluded { get; private set; }
     public int PublicSupportBlock { get; private set; }
@@ -78,7 +80,7 @@ public class BlockState : MonoBehaviour
         if (_addResidents && _residents < _maxResidents)
         {
             _residents++;
-            PublicSupportBlock += 10;
+            PublicSupportBlock += _stepAddSupportPeople;
 
             if (PublicSupportBlock > _controller.PerCent)
                 PublicSupportBlock = _controller.PerCent;
@@ -90,7 +92,7 @@ public class BlockState : MonoBehaviour
                 _residents--;
 
             _addResidents = true;
-            PublicSupportBlock -= 10;
+            PublicSupportBlock -= _stepRemoveSupportPeople;
 
             if (PublicSupportBlock < 0)
                 PublicSupportBlock = 0;
@@ -104,6 +106,7 @@ public class BlockState : MonoBehaviour
             if (_trashCount < _trashMaxIndex)
             {
                 _trashCount += _residents * _personTrashOneTime * timeSpeed;
+                _smoke.gameObject.SetActive(false);
             }
             else
             {

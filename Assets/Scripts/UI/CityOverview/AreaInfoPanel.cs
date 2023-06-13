@@ -10,40 +10,53 @@ public class AreaInfoPanel : MonoBehaviour
     [SerializeField] private Text _numberPeople;
     [SerializeField] private Text _contractCost;
     [SerializeField] private Text _contractText;
-    [SerializeField] private TrackPark _trackPark;
-    [SerializeField] private Button _collectTrash;
+    [SerializeField] private CollectTrashButton _collectTrash;
     [SerializeField] private GarageState _garageState;
     [SerializeField] private TMP_Text _contractInfo;
     [SerializeField] private Button _contractButton;
+    [SerializeField] private AreasService _areaServise;
+    [SerializeField] private Wallet _wallet;
+    [SerializeField] private TrackPark _trackPark;
 
     [SerializeField] private AreaState _area;
+
+    private void FixedUpdate()
+    {
+        if (_area.IsContract)
+        {
+            UpdateData();
+            SetMessageCollectButton();
+        }
+    }
+    public void CollectTrash()
+    {
+        if (_trackPark.IsFreeTrack)
+            _trackPark.SendTrashTrack(_area);
+    }
 
     public void Init(AreaState area)
     {
         _area = area;
-        _contractCost.text = Convert.ToString(_area.ContractCost);
-        UpdateData();
 
-        if (_trackPark.CountFreeTrack() > 0)
+        if (!area.IsContract)
         {
-            _contractText.gameObject.SetActive(false);
-            _collectTrash.gameObject.SetActive(true);
+            ShowDetals(true, false, true);
+            _contractCost.text = Convert.ToString(_area.ContractCost);
+
+            if (_garageState.Level >= _area.ContractConditions)
+            {
+                _contractInfo.text = "Условия для Контракта выполнены !  Контракт?";
+                SetColorContractButton(Color.green);
+            }
+            else
+            {
+                _contractInfo.text = "Условия для Контракта не выполнены ! Поднимите уровень станции.";
+                SetColorContractButton(Color.red);
+            }
         }
         else
         {
-            _collectTrash.gameObject.SetActive(false);
-            _contractText.gameObject.SetActive(true);
-        }
-
-        if (_garageState.Level >= _area.ContractConditions)
-        {
-            _contractInfo.text = "Условия для Контракта выполнены !  Контракт?";
-            SetColorContractButton(Color.green);
-        }
-        else
-        {
-            _contractInfo.text = "Условия для Контракта не выполнены ! Поднимите уровень станции.";
-            SetColorContractButton(Color.red);
+            ShowDetals(false, true, false);
         }
     }
 
@@ -52,22 +65,44 @@ public class AreaInfoPanel : MonoBehaviour
         _area = null;
     }
 
-    public void UpdateData()
+    public void TakeContract()
     {
-        _area.GetData();
+        if (_garageState.Level >= _area.ContractConditions)
+        {
+            if (_wallet.Coints < _area.ContractCost)
+            {
+                _contractInfo.text = "Не хватает монет!";
+            }
+            else
+            {
+                _wallet.RemoveCoins(_area.ContractCost);
+                _area.CreateContract();
+                _areaServise.AddArea(_area);
+                ShowDetals(false, true, false);
+            }
+        }
+    }
+
+    private void UpdateData()
+    {
         _publicSupport.text = Convert.ToString(_area.PublicSupport) + "%";
         _corentTrash.text = Convert.ToString(_area.CurrentTrashPerCent) + "%";
         _numberPeople.text = Convert.ToString(_area.NumberPeople);
     }
 
-    public void CollectTrash()
+    private void ShowDetals(bool contractText, bool collectButton, bool contratButton)
     {
-        _trackPark.SendTrashTrack(_area);
+        _contractText.gameObject.SetActive(contractText);
+        _collectTrash.gameObject.SetActive(collectButton);
+        _contractButton.gameObject.SetActive(contratButton);
     }
 
-    public void TakeContract()
+    private void SetMessageCollectButton()
     {
-        _area.CreateContract();
+        if (_trackPark.IsFreeTrack)
+            _collectTrash.ShowMessage("Отпавить мусоровоз");
+        else
+            _collectTrash.ShowMessage("Нет свободных машин");
     }
 
     private void SetColorContractButton(Color color)

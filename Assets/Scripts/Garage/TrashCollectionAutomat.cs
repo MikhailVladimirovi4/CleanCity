@@ -23,7 +23,7 @@ public class TrashCollectionAutomat : MonoBehaviour
     {
         if (_isWorks)
         {
-            if (_trackParck.IsFreeTrack() != null)
+            if (_trackParck.GetFreeTrack() != null)
             {
                 int index = GetIndexAreaMaxTrash();
 
