@@ -76,9 +76,16 @@ public class Office : MonoBehaviour
             {
                 if (_trackPark.CurrentCountTrack < _trackPark.CurrentCountPlace)
                 {
-                    _wallet.RemoveCoins(_gameController.TrachTrackPrice);
-                    _trackPark.AddTrashTrack();
-                    text = "Мусоровоз доставлен в гараж.";
+                    if (_trackPark.CurrentCountTrack < _garageState.Level || _garageState.Level == _garageState.MaxLevelGarage)
+                    {
+                        _wallet.RemoveCoins(_gameController.TrachTrackPrice);
+                        _trackPark.AddTrashTrack();
+                        text = "Мусоровоз доставлен в гараж.";
+                    }
+                    else
+                    {
+                        text = "Поднимите уровень станции.";
+                    }
                 }
                 else
                 {
