@@ -282,7 +282,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 10
-  _target: {fileID: 0}
 --- !u!114 &1534446944991119458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,7 +294,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5921b9d0d7c02644e9c054565545b9b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isFree: 0
 --- !u!114 &7037166968473996426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,11 +306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d092de2b24ed314f8fe7795a7c72df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _removeTrashPoints: []
-  _collectTrashPoints: []
-  _leavingAreaPonts: []
-  _parkingPosition: {fileID: 0}
-  _routeStep: 0
 --- !u!114 &7703366384420874395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,9 +318,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0238b6a0f36fe4747a545ccda6fa5e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cargoSize: 500000
-  _loadingSpeed: 5000
+  _cargoSize: 600000
+  _loadingSpeed: 6000
+  _currentTrash: 0
   _isLoadingTrash: 0
+  _isFull: 0
 --- !u!1 &6867682389424402910
 GameObject:
   m_ObjectHideFlags: 0

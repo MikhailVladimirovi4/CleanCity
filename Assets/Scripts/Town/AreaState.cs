@@ -7,7 +7,6 @@ public class AreaState : MonoBehaviour
     [SerializeField] private Transform[] _routeCollectPoints;
     [SerializeField] private Transform[] _routeLeavingArea;
     [SerializeField] private int _contractConditions;
-    [SerializeField] private int _contractCost;
 
     private readonly int PerCent = 100;
     private int _trashIndexBlocksPerCent;
@@ -19,7 +18,6 @@ public class AreaState : MonoBehaviour
     public bool IsContract { get; private set; }
 
     public int ContractConditions => _contractConditions;
-    public int ContractCost => _contractCost;
     public int RouteCollectPoints => _routeCollectPoints.Length;
     public int RouteLeavingAreaPoints => _routeLeavingArea.Length;
 

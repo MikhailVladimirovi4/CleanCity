@@ -14,12 +14,11 @@ public class Timer : MonoBehaviour
     private int _days;
     private readonly int _dayWeek = 1;
     private readonly int _timeDay = 1440;
-
-    public WaitForSeconds Delay { get; private set; }
-
-    public event UnityAction WeekIsOver;
-    public event UnityAction<int> TimeChanged;
     private Coroutine _timeFlow;
+
+    public event UnityAction DayIsOver;
+    public event UnityAction<int> TimeChanged;
+    public WaitForSeconds Delay { get; private set; }
 
     public bool IsPlaying { get; private set; }
 
@@ -62,7 +61,7 @@ public class Timer : MonoBehaviour
 
                 if (_days % _dayWeek == 0)
                 {
-                    WeekIsOver?.Invoke();
+                    DayIsOver?.Invoke();
                 }
             }
         }

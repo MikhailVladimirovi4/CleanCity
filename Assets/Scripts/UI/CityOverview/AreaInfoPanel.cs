@@ -17,8 +17,9 @@ public class AreaInfoPanel : MonoBehaviour
     [SerializeField] private AreasService _areaServise;
     [SerializeField] private Wallet _wallet;
     [SerializeField] private TrackPark _trackPark;
+    [SerializeField] private GameController _controller;
 
-    [SerializeField] private AreaState _area;
+private AreaState _area;
 
     private void FixedUpdate()
     {
@@ -41,7 +42,7 @@ public class AreaInfoPanel : MonoBehaviour
         if (!area.IsContract)
         {
             ShowDetals(true, false, true);
-            _contractCost.text = Convert.ToString(_area.ContractCost);
+            _contractCost.text = Convert.ToString(_controller.ContractPrice);
 
             if (_garageState.Level >= _area.ContractConditions)
             {
@@ -69,13 +70,13 @@ public class AreaInfoPanel : MonoBehaviour
     {
         if (_garageState.Level >= _area.ContractConditions)
         {
-            if (_wallet.Coints < _area.ContractCost)
+            if (_wallet.Coints < _controller.ContractPrice)
             {
                 _contractInfo.text = "Не хватает монет!";
             }
             else
             {
-                _wallet.RemoveCoins(_area.ContractCost);
+                _wallet.RemoveCoins(_controller.ContractPrice);
                 _area.CreateContract();
                 _areaServise.AddArea(_area);
                 ShowDetals(false, true, false);

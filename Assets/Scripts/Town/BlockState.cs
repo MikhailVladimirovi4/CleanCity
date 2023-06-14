@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Diagnostics.Contracts;
 using UnityEngine;
 
 public class BlockState : MonoBehaviour
 {
     [SerializeField] private int _maxResidents;
-    [SerializeField] private int _minResidents;
     [SerializeField] private Timer _timer;
     [SerializeField] private GameController _controller;
     [SerializeField] private Smoke _smoke;
@@ -17,9 +14,6 @@ public class BlockState : MonoBehaviour
     private int _personTrashOneTime;
     private bool _addResidents;
     private int _trashMaxIndex;
-    private readonly int _startSupportBlock = 50;
-    private readonly int _stepAddSupportPeople = 2;
-    private readonly int _stepRemoveSupportPeople = 10;
 
     public bool IsIncluded { get; private set; }
     public int PublicSupportBlock { get; private set; }
@@ -33,13 +27,13 @@ public class BlockState : MonoBehaviour
     private void OnEnable()
     {
         _trashMaxIndex = _maxResidents * _timer.GetTimeDay();
-        _timer.WeekIsOver += AddResidents;
+        _timer.DayIsOver += AddResidents;
         _timer.TimeChanged += AddTrash;
     }
 
     private void OnDisable()
     {
-        _timer.WeekIsOver -= AddResidents;
+        _timer.DayIsOver -= AddResidents;
         _timer.TimeChanged -= AddTrash;
     }
 
@@ -50,8 +44,8 @@ public class BlockState : MonoBehaviour
         _addResidents = true;
         IsIncluded = false;
         _stateDisplay.gameObject.SetActive(false);
-        PublicSupportBlock = _startSupportBlock;
-        _residents = _maxResidents * _controller.IndexStartPeopleBlock/ _controller.PerCent;
+        PublicSupportBlock = _controller.StartSupportBlock;
+        _residents = _maxResidents * _controller.IndexStartPeopleBlock / _controller.PerCent;
     }
 
     public void Includ()
@@ -79,25 +73,27 @@ public class BlockState : MonoBehaviour
 
     private void AddResidents()
     {
-        if (_addResidents && _residents < _maxResidents)
+        if (_addResidents)
         {
-            _residents++;
-            PublicSupportBlock += _stepAddSupportPeople;
+            if (_residents < _maxResidents)
+                _residents++;
+
+            PublicSupportBlock += _controller.StepAddSupportPeople;
 
             if (PublicSupportBlock > _controller.PerCent)
                 PublicSupportBlock = _controller.PerCent;
-
         }
         else
         {
-            if (!_addResidents && _residents > _minResidents)
+            if (_residents > _controller.IndexMinPeopleBlock)
                 _residents--;
 
-            _addResidents = true;
-            PublicSupportBlock -= _stepRemoveSupportPeople;
+            PublicSupportBlock -= _controller.StepRemoveSupportPeople;
 
             if (PublicSupportBlock < 0)
                 PublicSupportBlock = 0;
+
+            _addResidents = true;
         }
     }
 

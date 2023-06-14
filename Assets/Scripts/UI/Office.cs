@@ -18,9 +18,20 @@ public class Office : MonoBehaviour
     [SerializeField] private TrackPark _trackPark;
     [SerializeField] private GarageState _garageState;
     [SerializeField] private AreasService _areasService;
+    [SerializeField] private Timer _timer;
 
     private Wallet _wallet;
     private GameController _gameController;
+
+    private void OnEnable()
+    {
+        _timer.DayIsOver += AddContractCoins;
+    }
+
+    private void OnDisable()
+    {
+        _timer.DayIsOver -= AddContractCoins;
+    }
 
     private void Start()
     {
@@ -31,7 +42,7 @@ public class Office : MonoBehaviour
 
     private void FixedUpdate()
     {
-            UpdateValues();
+        UpdateValues();
     }
 
     public void UpLevel()
@@ -154,5 +165,13 @@ public class Office : MonoBehaviour
     {
         _info.gameObject.SetActive(true);
         _info.DisplayInfo(text);
+    }
+
+    private void AddContractCoins()
+    {
+        float sumCoins;
+
+        sumCoins = _areasService.GetPopulation() * _gameController.CostsServisePeople;
+        _wallet.AddCoins((int)sumCoins);
     }
 }
