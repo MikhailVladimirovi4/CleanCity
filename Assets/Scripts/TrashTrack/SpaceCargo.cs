@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class SpaceCargo : MonoBehaviour
 {
-    [SerializeField]  private int _cargoSize;
-    [SerializeField]  private int _loadingSpeed;
+    [SerializeField] private int _cargoSize;
+    [SerializeField] private int _loadingSpeed;
 
     [SerializeField] private int _currentTrash;
     [SerializeField] private bool _isLoadingTrash;
     [SerializeField] private bool _isFull;
-    [SerializeField] private bool _isReachedArea;
     private Coroutine _loadingTrash;
 
     public bool IsFull => _isFull;
@@ -19,11 +18,7 @@ public class SpaceCargo : MonoBehaviour
     {
         _isFull = false;
         _isLoadingTrash = false;
-        _isReachedArea = false;
     }
-
-    public void SetReachedArea() => _isReachedArea = true;
-    public void SetLiavingArea() => _isReachedArea = false;
 
     private void RemoveTrash()
     {
@@ -33,15 +28,12 @@ public class SpaceCargo : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_isReachedArea)
+        if (other.gameObject.TryGetComponent(out TrashLoadingBlock trashLoadingBlock))
         {
-            if (other.gameObject.TryGetComponent(out TrashLoadingBlock trashLoadingBlock))
-            {
-                if (_loadingTrash != null)
-                    StopCoroutine(_loadingTrash);
+            if (_loadingTrash != null)
+                StopCoroutine(_loadingTrash);
 
-                _loadingTrash = StartCoroutine(LoadingTrash(trashLoadingBlock));
-            }
+            _loadingTrash = StartCoroutine(LoadingTrash(trashLoadingBlock));
         }
 
         if (other.gameObject.TryGetComponent(out TrashDump trashDump))

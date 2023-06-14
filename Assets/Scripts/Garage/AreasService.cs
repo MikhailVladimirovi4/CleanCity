@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AreasService : MonoBehaviour
 {
-    [SerializeField] private List<AreaState> _areas = new List<AreaState>();
+    private readonly List<AreaState> _areas = new List<AreaState>();
 
     public int AreasCount => _areas.Count;
 

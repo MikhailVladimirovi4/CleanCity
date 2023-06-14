@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BlockState : MonoBehaviour
 {
-    [SerializeField] private int _residents;
     [SerializeField] private int _maxResidents;
     [SerializeField] private int _minResidents;
     [SerializeField] private Timer _timer;
@@ -13,6 +12,7 @@ public class BlockState : MonoBehaviour
     [SerializeField] private StateDisplay _stateDisplay;
     [SerializeField] private TrashLoadingBlock _trashLoadingBlock;
 
+    private int _residents;
     private int _trashCount;
     private int _personTrashOneTime;
     private bool _addResidents;
@@ -45,11 +45,13 @@ public class BlockState : MonoBehaviour
 
     private void Start()
     {
+        _trashMaxIndex = _maxResidents * _timer.GetTimeDay();
         _personTrashOneTime = _controller.GetTrashRatePerson;
         _addResidents = true;
         IsIncluded = false;
         _stateDisplay.gameObject.SetActive(false);
         PublicSupportBlock = _startSupportBlock;
+        _residents = _maxResidents * _controller.IndexStartPeopleBlock/ _controller.PerCent;
     }
 
     public void Includ()
@@ -58,7 +60,7 @@ public class BlockState : MonoBehaviour
         _stateDisplay.gameObject.SetActive(true);
     }
 
-    public void RemoveTrash(int loadingSpeed, out int sendTrashCount,out bool isSendTrash)
+    public void RemoveTrash(int loadingSpeed, out int sendTrashCount, out bool isSendTrash)
     {
         isSendTrash = true;
 

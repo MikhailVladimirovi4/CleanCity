@@ -11,7 +11,6 @@ public class Navigator : MonoBehaviour
     private SpaceCargo _spaceCargo;
     private int _routeStep = 0;
     private TrashTrack _track;
-    private readonly int _areaReachStep = 3;
 
     private void Start()
     {
@@ -71,12 +70,6 @@ public class Navigator : MonoBehaviour
             }
         }
         _routeStep++;
-
-        if (_routeStep == _areaReachStep)
-            _spaceCargo.SetReachedArea();
-
-        if (_routeStep > _collectTrashPoints.Length)
-            _spaceCargo.SetLiavingArea();
 
         return nextTarget;
     }

@@ -13,7 +13,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private int _parkingPlacePrice;
     [SerializeField] private int _upLevelGaragePrice;
     [SerializeField] private Button _offSoundButton;
+    [SerializeField] private int _indexStartPeopleBlock;
 
+    public int IndexStartPeopleBlock => _indexStartPeopleBlock;
     public int GetTrashRatePerson => _trashRatePersonPerTime;
     public int TrachTrackPrice => _trachTrackPrice;
     public int ParkingPlacePrice => _parkingPlacePrice;

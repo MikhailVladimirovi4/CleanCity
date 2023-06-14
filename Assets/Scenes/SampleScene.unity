@@ -1660,6 +1660,7 @@ MonoBehaviour:
   _parkingPlacePrice: 1
   _upLevelGaragePrice: 100
   _offSoundButton: {fileID: 40788579}
+  _indexStartPeopleBlock: 80
 --- !u!82 &79054205
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2380,7 +2381,6 @@ MonoBehaviour:
   - {fileID: 1745766835}
   - {fileID: 1214485839}
   _routeCollectPoints:
-  - {fileID: 1770752774}
   - {fileID: 551567225}
   - {fileID: 95180892}
   - {fileID: 551567225}
@@ -2400,7 +2400,7 @@ MonoBehaviour:
   - {fileID: 391399198}
   - {fileID: 1708399366}
   _routeLeavingArea:
-  - {fileID: 1144563883}
+  - {fileID: 412835902}
   _contractConditions: 1
   _contractCost: 1
 --- !u!1 &114452715
@@ -3571,6 +3571,102 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161243111}
   m_CullTransparentMesh: 1
+--- !u!1 &163130203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 163130204}
+  - component: {fileID: 163130207}
+  - component: {fileID: 163130206}
+  - component: {fileID: 163130205}
+  m_Layer: 0
+  m_Name: street (120) Start Collect Town 3-8
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &163130204
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163130203}
+  m_LocalRotation: {x: -0.4955253, y: -0.504435, z: -0.504435, w: 0.4955253}
+  m_LocalPosition: {x: -4.769989, y: -64.06, z: -57.18}
+  m_LocalScale: {x: 200.00003, y: 200.00002, z: 100}
+  m_Children: []
+  m_Father: {fileID: 1643291846}
+  m_RootOrder: 120
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -91.020996}
+--- !u!64 &163130205
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163130203}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 72e65272e9752d842a914dd27fd86306, type: 3}
+--- !u!23 &163130206
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163130203}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 7e20040aa26e36443b2ae6d45e7b8ff6, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &163130207
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163130203}
+  m_Mesh: {fileID: 4300000, guid: 72e65272e9752d842a914dd27fd86306, type: 3}
 --- !u!1 &165315136
 GameObject:
   m_ObjectHideFlags: 0
@@ -3629,7 +3725,6 @@ MonoBehaviour:
   - {fileID: 255778292}
   _routeCollectPoints:
   - {fileID: 839419932}
-  - {fileID: 839419932}
   - {fileID: 1905951287}
   - {fileID: 839419932}
   - {fileID: 524435384}
@@ -3648,7 +3743,7 @@ MonoBehaviour:
   - {fileID: 1138897378}
   - {fileID: 1498010586}
   _routeLeavingArea:
-  - {fileID: 839419932}
+  - {fileID: 138405237}
   _contractConditions: 5
   _contractCost: 1
 --- !u!1 &167218613
@@ -4070,26 +4165,26 @@ MonoBehaviour:
   - {fileID: 305732905}
   - {fileID: 387916369}
   _routeCollectPoints:
-  - {fileID: 1293949522}
-  - {fileID: 1743522420}
-  - {fileID: 387916368}
-  - {fileID: 387916366}
-  - {fileID: 387916368}
-  - {fileID: 305732904}
-  - {fileID: 305732902}
-  - {fileID: 305732904}
-  - {fileID: 1925889573}
-  - {fileID: 1925889571}
-  - {fileID: 1925889573}
-  - {fileID: 585728560}
-  - {fileID: 585728558}
-  - {fileID: 585728560}
+  - {fileID: 412835902}
+  - {fileID: 647266566}
   - {fileID: 811605703}
   - {fileID: 811605701}
   - {fileID: 811605703}
+  - {fileID: 585728560}
+  - {fileID: 585728558}
+  - {fileID: 585728560}
+  - {fileID: 1925889573}
+  - {fileID: 1925889571}
+  - {fileID: 1925889573}
+  - {fileID: 305732904}
+  - {fileID: 305732902}
+  - {fileID: 305732904}
+  - {fileID: 387916368}
+  - {fileID: 387916366}
+  - {fileID: 387916368}
   _routeLeavingArea:
-  - {fileID: 1743522420}
-  - {fileID: 1293949522}
+  - {fileID: 647266566}
+  - {fileID: 412835902}
   _contractConditions: 3
   _contractCost: 1
 --- !u!4 &184460622
@@ -5094,29 +5189,29 @@ MonoBehaviour:
   - {fileID: 1320491179}
   - {fileID: 996921535}
   _routeCollectPoints:
-  - {fileID: 138405237}
-  - {fileID: 1231628545}
-  - {fileID: 1430028863}
-  - {fileID: 1133704401}
-  - {fileID: 1430028863}
-  - {fileID: 1621407898}
-  - {fileID: 1333925453}
-  - {fileID: 1621407898}
-  - {fileID: 1002056254}
-  - {fileID: 1866271388}
-  - {fileID: 1002056254}
-  - {fileID: 485061916}
-  - {fileID: 1433121709}
-  - {fileID: 485061916}
-  - {fileID: 1209046060}
-  - {fileID: 776621962}
-  - {fileID: 1209046060}
+  - {fileID: 163130204}
+  - {fileID: 312792094}
   - {fileID: 748503695}
   - {fileID: 13725580}
   - {fileID: 748503695}
-  _routeLeavingArea:
+  - {fileID: 1209046060}
+  - {fileID: 776621962}
+  - {fileID: 1209046060}
+  - {fileID: 485061916}
+  - {fileID: 1433121709}
+  - {fileID: 485061916}
+  - {fileID: 1002056254}
+  - {fileID: 1866271388}
+  - {fileID: 1002056254}
+  - {fileID: 1621407898}
+  - {fileID: 1333925453}
+  - {fileID: 1621407898}
   - {fileID: 1430028863}
-  - {fileID: 839419932}
+  - {fileID: 1133704401}
+  - {fileID: 1430028863}
+  _routeLeavingArea:
+  - {fileID: 312792094}
+  - {fileID: 163130204}
   _contractConditions: 5
   _contractCost: 1
 --- !u!1 &222920695
@@ -5773,9 +5868,9 @@ MonoBehaviour:
   - {fileID: 91184360}
   - {fileID: 723890325}
   _routeCollectPoints:
-  - {fileID: 138405237}
+  - {fileID: 163130204}
+  - {fileID: 1563841233}
   - {fileID: 1285694516}
-  - {fileID: 138405237}
   - {fileID: 1496202053}
   - {fileID: 1285694516}
   - {fileID: 456002853}
@@ -5791,8 +5886,8 @@ MonoBehaviour:
   - {fileID: 1338518076}
   - {fileID: 475220098}
   _routeLeavingArea:
-  - {fileID: 1285694516}
-  - {fileID: 138405237}
+  - {fileID: 1563841233}
+  - {fileID: 163130204}
   _contractConditions: 5
   _contractCost: 1
 --- !u!1 &247087604
@@ -7331,7 +7426,6 @@ MonoBehaviour:
   - {fileID: 391604746}
   _routeCollectPoints:
   - {fileID: 138405237}
-  - {fileID: 138405237}
   - {fileID: 1322027933}
   - {fileID: 138405237}
   - {fileID: 151923899}
@@ -7746,7 +7840,7 @@ MonoBehaviour:
   - {fileID: 8810877221911755618}
   _routeCollectPoints:
   - {fileID: 412835902}
-  - {fileID: 8810877221911755617}
+  - {fileID: 1462437013}
   - {fileID: 8810877221911755616}
   - {fileID: 8810877221911755614}
   - {fileID: 8810877221911755616}
@@ -7766,7 +7860,7 @@ MonoBehaviour:
   - {fileID: 3588266612746249118}
   - {fileID: 3588266612746249124}
   _routeLeavingArea:
-  - {fileID: 8810877221911755617}
+  - {fileID: 1462437013}
   - {fileID: 412835902}
   _contractConditions: 3
   _contractCost: 1
@@ -7803,7 +7897,7 @@ GameObject:
   - component: {fileID: 312792096}
   - component: {fileID: 312792095}
   m_Layer: 0
-  m_Name: street (105)
+  m_Name: street (105) Step Collect 3 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8091,7 +8185,7 @@ PrefabInstance:
       objectReference: {fileID: 287024507}
     - target: {fileID: 6750317222560575201, guid: 4d1d8f7c0df2488438bbfe3ae2ac7695, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6750317222560575201, guid: 4d1d8f7c0df2488438bbfe3ae2ac7695, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9639,7 +9733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1023924540717567320, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1023924540717567320, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
       propertyPath: m_AnchorMax.x
@@ -11151,6 +11245,10 @@ PrefabInstance:
     - target: {fileID: 1023924540717567320, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696278684179161650, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
+      propertyPath: m_Name
+      value: street (19) StartCollectTown
       objectReference: {fileID: 0}
     - target: {fileID: 4583601732077410832, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
       propertyPath: _visor
@@ -13506,6 +13604,10 @@ PrefabInstance:
       propertyPath: _visor
       value: 
       objectReference: {fileID: 287024507}
+    - target: {fileID: 4583601733014954173, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
+      propertyPath: m_Name
+      value: StartPosition Start Collect Town 1 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
 --- !u!1 &505181002
@@ -13906,7 +14008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 608607207723299607, guid: ee4c6201377202f4889c9f65d36732ff, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 608607207723299607, guid: ee4c6201377202f4889c9f65d36732ff, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16911,7 +17013,7 @@ GameObject:
   - component: {fileID: 647266568}
   - component: {fileID: 647266567}
   m_Layer: 0
-  m_Name: street (75)
+  m_Name: street (75) Collect 7 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17277,6 +17379,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1512199948}
     m_Modifications:
+    - target: {fileID: 2061288823164190010, guid: 9a03bce409942524d8383f982a310334, type: 3}
+      propertyPath: m_Name
+      value: Street
+      objectReference: {fileID: 0}
     - target: {fileID: 2062292454810362848, guid: 9a03bce409942524d8383f982a310334, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -17333,6 +17439,10 @@ PrefabInstance:
       propertyPath: _timer
       value: 
       objectReference: {fileID: 309035647}
+    - target: {fileID: 7704066128959636542, guid: 9a03bce409942524d8383f982a310334, type: 3}
+      propertyPath: _residents
+      value: 800
+      objectReference: {fileID: 0}
     - target: {fileID: 7704066128959636542, guid: 9a03bce409942524d8383f982a310334, type: 3}
       propertyPath: _controller
       value: 
@@ -17573,7 +17683,6 @@ MonoBehaviour:
   - {fileID: 1632144132}
   - {fileID: 1670203663}
   _routeCollectPoints:
-  - {fileID: 1770752774}
   - {fileID: 634323280}
   - {fileID: 1697218377}
   - {fileID: 634323280}
@@ -17593,7 +17702,7 @@ MonoBehaviour:
   - {fileID: 2057158816}
   - {fileID: 631366628}
   _routeLeavingArea:
-  - {fileID: 1957563594}
+  - {fileID: 412835902}
   _contractConditions: 1
   _contractCost: 1
 --- !u!4 &704079259
@@ -18771,7 +18880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 608607207723299607, guid: ee4c6201377202f4889c9f65d36732ff, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 608607207723299607, guid: ee4c6201377202f4889c9f65d36732ff, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23696,7 +23805,7 @@ GameObject:
   - component: {fileID: 940910708}
   - component: {fileID: 940910707}
   m_Layer: 0
-  m_Name: street (90)
+  m_Name: street (90) Step Collect 5 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26028,6 +26137,10 @@ PrefabInstance:
       propertyPath: _timer
       value: 
       objectReference: {fileID: 309035647}
+    - target: {fileID: 372635621, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
+      propertyPath: _residents
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 372635621, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
       propertyPath: _controller
       value: 
@@ -28847,11 +28960,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143691444}
   m_CullTransparentMesh: 1
---- !u!4 &1144563883 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 46309059072785321, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
-  m_PrefabInstance: {fileID: 412835901}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1149115438 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 608607207723299607, guid: ee4c6201377202f4889c9f65d36732ff, type: 3}
@@ -30746,7 +30854,7 @@ MonoBehaviour:
   - {fileID: 1607409183}
   _routeCollectPoints:
   - {fileID: 412835902}
-  - {fileID: 1607409182}
+  - {fileID: 647266566}
   - {fileID: 1607409181}
   - {fileID: 1607409179}
   - {fileID: 1607409181}
@@ -30760,7 +30868,7 @@ MonoBehaviour:
   - {fileID: 767491649}
   - {fileID: 767491651}
   _routeLeavingArea:
-  - {fileID: 1607409182}
+  - {fileID: 647266566}
   - {fileID: 412835902}
   _contractConditions: 4
   _contractCost: 1
@@ -31800,11 +31908,6 @@ PrefabInstance:
       objectReference: {fileID: 287024507}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
---- !u!4 &1293949522 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3966133143384711799, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
-  m_PrefabInstance: {fileID: 1293949521}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1301598148
 GameObject:
   m_ObjectHideFlags: 0
@@ -34595,26 +34698,26 @@ MonoBehaviour:
   - {fileID: 1661422200}
   - {fileID: 1596270755}
   _routeCollectPoints:
-  - {fileID: 1293949522}
-  - {fileID: 1743522420}
-  - {fileID: 1596270754}
-  - {fileID: 1596270753}
-  - {fileID: 1596270754}
-  - {fileID: 1661422199}
-  - {fileID: 1661422198}
-  - {fileID: 1661422199}
-  - {fileID: 316366847}
-  - {fileID: 316366846}
-  - {fileID: 316366847}
-  - {fileID: 747713640}
-  - {fileID: 747713639}
-  - {fileID: 747713640}
+  - {fileID: 412835902}
+  - {fileID: 1788642455}
   - {fileID: 1738784840}
   - {fileID: 1738784839}
   - {fileID: 1738784840}
+  - {fileID: 747713640}
+  - {fileID: 747713639}
+  - {fileID: 747713640}
+  - {fileID: 316366847}
+  - {fileID: 316366846}
+  - {fileID: 316366847}
+  - {fileID: 1661422199}
+  - {fileID: 1661422198}
+  - {fileID: 1661422199}
+  - {fileID: 1596270754}
+  - {fileID: 1596270753}
+  - {fileID: 1596270754}
   _routeLeavingArea:
-  - {fileID: 1743522420}
-  - {fileID: 1293949522}
+  - {fileID: 1788642455}
+  - {fileID: 412835902}
   _contractConditions: 3
   _contractCost: 1
 --- !u!4 &1394312727
@@ -34629,10 +34732,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1738784838}
+  - {fileID: 747713638}
   - {fileID: 316366845}
   - {fileID: 1661422197}
   - {fileID: 1596270752}
-  - {fileID: 747713638}
   m_Father: {fileID: 250836073}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -34742,6 +34845,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1512199948}
     m_Modifications:
+    - target: {fileID: 2061288823164190010, guid: 9a03bce409942524d8383f982a310334, type: 3}
+      propertyPath: m_Name
+      value: Street
+      objectReference: {fileID: 0}
     - target: {fileID: 2062292454810362848, guid: 9a03bce409942524d8383f982a310334, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -34798,6 +34905,10 @@ PrefabInstance:
       propertyPath: _timer
       value: 
       objectReference: {fileID: 309035647}
+    - target: {fileID: 7704066128959636542, guid: 9a03bce409942524d8383f982a310334, type: 3}
+      propertyPath: _residents
+      value: 800
+      objectReference: {fileID: 0}
     - target: {fileID: 7704066128959636542, guid: 9a03bce409942524d8383f982a310334, type: 3}
       propertyPath: _controller
       value: 
@@ -35124,7 +35235,7 @@ GameObject:
   - component: {fileID: 1462437015}
   - component: {fileID: 1462437014}
   m_Layer: 0
-  m_Name: street (105)
+  m_Name: street (105) Collect 3 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36031,11 +36142,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492510275}
   m_Mesh: {fileID: 4300000, guid: 72e65272e9752d842a914dd27fd86306, type: 3}
---- !u!4 &1492567948 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1492567948, guid: ee4c6201377202f4889c9f65d36732ff, type: 3}
-  m_PrefabInstance: {fileID: 290085653}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1496202053 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 46309059514670362, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
@@ -36481,23 +36587,23 @@ MonoBehaviour:
   - {fileID: 1638761474}
   - {fileID: 2007957145}
   _routeCollectPoints:
-  - {fileID: 138405237}
-  - {fileID: 1285694516}
-  - {fileID: 839419932}
-  - {fileID: 731625847}
-  - {fileID: 167245765}
-  - {fileID: 181222974}
-  - {fileID: 1338656842}
-  - {fileID: 181222974}
-  - {fileID: 1761854693}
-  - {fileID: 1941574919}
-  - {fileID: 1761854693}
+  - {fileID: 163130204}
+  - {fileID: 1563841233}
   - {fileID: 1825658960}
   - {fileID: 1078479263}
   - {fileID: 1825658960}
-  _routeLeavingArea:
+  - {fileID: 1761854693}
+  - {fileID: 1941574919}
+  - {fileID: 1761854693}
+  - {fileID: 181222974}
+  - {fileID: 1338656842}
+  - {fileID: 181222974}
   - {fileID: 167245765}
-  - {fileID: 839419932}
+  - {fileID: 731625847}
+  - {fileID: 167245765}
+  _routeLeavingArea:
+  - {fileID: 1563841233}
+  - {fileID: 163130204}
   _contractConditions: 5
   _contractCost: 1
 --- !u!1 &1514265670
@@ -36804,23 +36910,23 @@ MonoBehaviour:
   - {fileID: 1335506977}
   - {fileID: 1782542963}
   _routeCollectPoints:
-  - {fileID: 138405237}
-  - {fileID: 1769359670}
-  - {fileID: 839419932}
-  - {fileID: 711973181}
-  - {fileID: 602757671}
-  - {fileID: 83070612}
-  - {fileID: 457554249}
-  - {fileID: 83070612}
-  - {fileID: 1543161629}
-  - {fileID: 1771548951}
-  - {fileID: 1543161629}
+  - {fileID: 163130204}
+  - {fileID: 940910706}
   - {fileID: 833220830}
   - {fileID: 1302943281}
   - {fileID: 833220830}
-  _routeLeavingArea:
+  - {fileID: 1543161629}
+  - {fileID: 1771548951}
+  - {fileID: 1543161629}
+  - {fileID: 83070612}
+  - {fileID: 457554249}
+  - {fileID: 83070612}
   - {fileID: 602757671}
-  - {fileID: 839419932}
+  - {fileID: 711973181}
+  - {fileID: 602757671}
+  _routeLeavingArea:
+  - {fileID: 940910706}
+  - {fileID: 163130204}
   _contractConditions: 5
   _contractCost: 1
 --- !u!1 &1531921420
@@ -38105,7 +38211,7 @@ GameObject:
   - component: {fileID: 1563841235}
   - component: {fileID: 1563841234}
   m_Layer: 0
-  m_Name: street (75)
+  m_Name: street (75) Step Collect 7 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39084,7 +39190,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2062292454810362848, guid: 9a03bce409942524d8383f982a310334, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2062292454810362848, guid: 9a03bce409942524d8383f982a310334, type: 3}
       propertyPath: m_LocalPosition.x
@@ -39569,11 +39675,6 @@ RectTransform:
 --- !u!4 &1607409181 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4583601733014954174, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
-  m_PrefabInstance: {fileID: 1607409178}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1607409182 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3966133143384711799, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
   m_PrefabInstance: {fileID: 1607409178}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1607409183 stripped
@@ -40752,6 +40853,7 @@ Transform:
   - {fileID: 752447093}
   - {fileID: 1598453698}
   - {fileID: 355845788}
+  - {fileID: 163130204}
   m_Father: {fileID: 1214389860}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -41434,7 +41536,7 @@ PrefabInstance:
       objectReference: {fileID: 287024507}
     - target: {fileID: 6750317222560575201, guid: 4d1d8f7c0df2488438bbfe3ae2ac7695, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6750317222560575201, guid: 4d1d8f7c0df2488438bbfe3ae2ac7695, type: 3}
       propertyPath: m_LocalPosition.x
@@ -41911,29 +42013,29 @@ MonoBehaviour:
   - {fileID: 1103406518}
   - {fileID: 1347608557}
   _routeCollectPoints:
-  - {fileID: 138405237}
-  - {fileID: 138405237}
-  - {fileID: 138405237}
-  - {fileID: 1613950973}
-  - {fileID: 1231628545}
-  - {fileID: 1598763520}
-  - {fileID: 1037121513}
-  - {fileID: 1598763520}
-  - {fileID: 1442162690}
-  - {fileID: 839668428}
-  - {fileID: 1442162690}
-  - {fileID: 1476392833}
-  - {fileID: 1357352007}
-  - {fileID: 1476392833}
-  - {fileID: 758946245}
-  - {fileID: 1498792246}
-  - {fileID: 758946245}
+  - {fileID: 163130204}
+  - {fileID: 312792094}
   - {fileID: 1500779129}
   - {fileID: 324974243}
   - {fileID: 1500779129}
-  _routeLeavingArea:
+  - {fileID: 758946245}
+  - {fileID: 1498792246}
+  - {fileID: 758946245}
+  - {fileID: 1476392833}
+  - {fileID: 1357352007}
+  - {fileID: 1476392833}
+  - {fileID: 1442162690}
+  - {fileID: 839668428}
+  - {fileID: 1442162690}
+  - {fileID: 1598763520}
+  - {fileID: 1037121513}
+  - {fileID: 1598763520}
   - {fileID: 1231628545}
-  - {fileID: 138405237}
+  - {fileID: 1613950973}
+  - {fileID: 1231628545}
+  _routeLeavingArea:
+  - {fileID: 312792094}
+  - {fileID: 163130204}
   _contractConditions: 5
   _contractCost: 1
 --- !u!1001 &1682752305
@@ -42503,8 +42605,9 @@ MonoBehaviour:
   - {fileID: 1536091885}
   - {fileID: 95748408}
   _routeCollectPoints:
-  - {fileID: 138405237}
-  - {fileID: 138405237}
+  - {fileID: 163130204}
+  - {fileID: 940910706}
+  - {fileID: 1769359670}
   - {fileID: 923413409}
   - {fileID: 1769359670}
   - {fileID: 525806033}
@@ -42520,8 +42623,8 @@ MonoBehaviour:
   - {fileID: 662462723}
   - {fileID: 618962144}
   _routeLeavingArea:
-  - {fileID: 1769359670}
-  - {fileID: 138405237}
+  - {fileID: 940910706}
+  - {fileID: 163130204}
   _contractConditions: 5
   _contractCost: 1
 --- !u!1 &1701892040
@@ -44485,11 +44588,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4583601733014954174, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
   m_PrefabInstance: {fileID: 139835772}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1770752774 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8569862198051069546, guid: 72d1191cc927bdd4d90a3ab2fc274783, type: 3}
-  m_PrefabInstance: {fileID: 1846394074}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1771548951 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 608607207083199048, guid: ee4c6201377202f4889c9f65d36732ff, type: 3}
@@ -44836,7 +44934,7 @@ GameObject:
   - component: {fileID: 1788642457}
   - component: {fileID: 1788642456}
   m_Layer: 0
-  m_Name: street (90)
+  m_Name: street (90) Collect 5 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49997,6 +50095,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 309035647}
     - target: {fileID: 2975927684024619151, guid: ee4c6201377202f4889c9f65d36732ff, type: 3}
+      propertyPath: _residents
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 2975927684024619151, guid: ee4c6201377202f4889c9f65d36732ff, type: 3}
       propertyPath: _controller
       value: 
       objectReference: {fileID: 79054204}
@@ -50022,11 +50124,6 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 46309059514670362, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
   m_PrefabInstance: {fileID: 1322227695}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1957563594 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 46309059072785321, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
-  m_PrefabInstance: {fileID: 1293949521}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1958231674
 GameObject:
@@ -50418,7 +50515,7 @@ MonoBehaviour:
   - {fileID: 5483132724031575661}
   _routeCollectPoints:
   - {fileID: 412835902}
-  - {fileID: 5483132724031575660}
+  - {fileID: 1788642455}
   - {fileID: 5483132724031575659}
   - {fileID: 5483132724031575657}
   - {fileID: 5483132724031575659}
@@ -50432,7 +50529,7 @@ MonoBehaviour:
   - {fileID: 1743522418}
   - {fileID: 1743522420}
   _routeLeavingArea:
-  - {fileID: 5483132724031575660}
+  - {fileID: 1788642455}
   - {fileID: 412835902}
   _contractConditions: 4
   _contractCost: 1
@@ -52545,8 +52642,8 @@ MonoBehaviour:
   - {fileID: 523129921}
   - {fileID: 290085654}
   _routeCollectPoints:
-  - {fileID: 1708399366}
-  - {fileID: 1492567948}
+  - {fileID: 412835902}
+  - {fileID: 1462437013}
   - {fileID: 261066320}
   - {fileID: 1038915965}
   - {fileID: 261066320}
@@ -52566,8 +52663,8 @@ MonoBehaviour:
   - {fileID: 2146727258}
   - {fileID: 1813928723}
   _routeLeavingArea:
-  - {fileID: 1492567948}
-  - {fileID: 1708399366}
+  - {fileID: 1462437013}
+  - {fileID: 412835902}
   _contractConditions: 2
   _contractCost: 1
 --- !u!4 &2066519259
@@ -52582,10 +52679,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1905782643931901098}
-  - {fileID: 360156093}
+  - {fileID: 523129920}
   - {fileID: 1851340249}
   - {fileID: 1276957151603108288}
-  - {fileID: 523129920}
+  - {fileID: 360156093}
   - {fileID: 290085655}
   m_Father: {fileID: 250836073}
   m_RootOrder: 2
@@ -54376,11 +54473,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4583601733014954174, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
   m_PrefabInstance: {fileID: 5483132724031575656}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &5483132724031575660 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3966133143384711799, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
-  m_PrefabInstance: {fileID: 5483132724031575656}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5483132724031575661 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 372635621, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
@@ -54609,11 +54701,6 @@ RectTransform:
 --- !u!4 &8810877221911755616 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4583601733014954174, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
-  m_PrefabInstance: {fileID: 8810877221911755613}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &8810877221911755617 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3966133143384711799, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
   m_PrefabInstance: {fileID: 8810877221911755613}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &8810877221911755618 stripped
