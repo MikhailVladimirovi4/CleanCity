@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private Button _offSoundButton;
     [SerializeField] private int _indexStartPeopleBlock;
     [SerializeField] private int _indexMinPeopleBlock;
+    [SerializeField] private AudioSource _backSound;
 
     public int IndexMinPeopleBlock => _indexStartPeopleBlock;
     public int ContractPrice => _contractPrice;
@@ -54,6 +55,7 @@ public class GameController : MonoBehaviour
         _timer.gameObject.SetActive(true);
         _openGarage.gameObject.SetActive(false);
         _offSoundButton.gameObject.SetActive(true);
+        _backSound.Play();
         Time.timeScale = 1;
     }
 }
