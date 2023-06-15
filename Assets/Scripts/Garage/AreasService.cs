@@ -1,9 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AreasService : MonoBehaviour
 {
     private readonly List<AreaState> _areas = new List<AreaState>();
+
+    public event UnityAction Won;
+    public event UnityAction Lost;
 
     public int AreasCount => _areas.Count;
 
@@ -41,12 +45,21 @@ public class AreasService : MonoBehaviour
     public int GetPublicSupport()
     {
         int count = 0;
+        int result;
 
         foreach (AreaState area in _areas)
         {
             count += area.PublicSupport;
         }
 
-        return count / _areas.Count;
+        result = count / _areas.Count;
+
+        if (result >= 100)
+            Won?.Invoke();
+
+        if(result <= 0)
+            Lost?.Invoke();
+
+        return result;
     }
 }

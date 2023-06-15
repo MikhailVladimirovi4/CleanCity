@@ -42,7 +42,8 @@ public class Office : MonoBehaviour
 
     private void FixedUpdate()
     {
-        UpdateValues();
+        if (_timer.IsPlaying)
+            UpdateValues();
     }
 
     public void UpLevel()

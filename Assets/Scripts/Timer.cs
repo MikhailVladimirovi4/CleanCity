@@ -26,7 +26,6 @@ public class Timer : MonoBehaviour
     public int GetHours() => _hours;
     public int GetDays() => _days;
     public int GetTimeDay() => _timeDay;
-
     public int SpeedTime => _speedTime;
 
 
@@ -40,6 +39,12 @@ public class Timer : MonoBehaviour
         _speedTime = _secondsDelay;
         IsPlaying = true;
         _timeFlow = StartCoroutine(TimeFlow());
+    }
+
+    public void Stop()
+    {
+        IsPlaying = false;
+        StopCoroutine(_timeFlow);
     }
 
     public void SetSpeedTime(int speedModifer)
