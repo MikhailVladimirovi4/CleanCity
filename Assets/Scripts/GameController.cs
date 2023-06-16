@@ -5,10 +5,10 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     [SerializeField] private int _trashRatePersonPerTime;
-    [SerializeField] private StartGameInfo _startGameInfo;
+    [SerializeField] private Menu _menu;
     [SerializeField] private Timer _timer;
     [SerializeField] private Button _openGarage;
-    [SerializeField] private Button _menu;
+    [SerializeField] private Button _menuButton;
     [SerializeField] private int _startingCoins;
     [SerializeField] private int _trachTrackPrice;
     [SerializeField] private int _parkingPlacePrice;
@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour
     private Wallet _wallet;
     private readonly int _numberAllAreas = 16;
     public readonly int PerCent = 100;
-    public readonly int StartSupportBlock = 98;
+    public readonly int StartSupportBlock = 50;
     public readonly int StepAddSupportPeople = 2;
     public readonly int StepRemoveSupportPeople = 10;
 
@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         Time.timeScale = 0;
-        _startGameInfo.gameObject.SetActive(true);
+        _menuButton.gameObject.SetActive(true);
     }
 
     private void OnEnable()
@@ -63,8 +63,9 @@ public class GameController : MonoBehaviour
     public void StartGame()
     {
         _wallet.AddCoins(_startingCoins);
-        _menu.gameObject.SetActive(true);
-        _startGameInfo.gameObject.SetActive(false);
+        _menuButton.gameObject.SetActive(true);
+        _menuButton.gameObject.SetActive(false);
+        _menu.gameObject.SetActive(false);
         _timer.gameObject.SetActive(true);
         _openGarage.gameObject.SetActive(false);
         _offSoundButton.gameObject.SetActive(true);
