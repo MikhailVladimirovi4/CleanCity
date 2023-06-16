@@ -11393,7 +11393,7 @@ MonoBehaviour:
   _timer: {fileID: 309035647}
   _openGarage: {fileID: 1204569133}
   _menu: {fileID: 1697515837}
-  _startingCoins: 1500
+  _startingCoins: 150000
   _trachTrackPrice: 800
   _parkingPlacePrice: 200
   _contractPrice: 500
@@ -53182,7 +53182,7 @@ GameObject:
   - component: {fileID: 1132250721}
   - component: {fileID: 1132250722}
   m_Layer: 5
-  m_Name: Starting Information
+  m_Name: Menu Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

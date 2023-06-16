@@ -26,6 +26,11 @@ public class GameController : MonoBehaviour
     [SerializeField] private CityOverview _cityOverview;
 
     private Wallet _wallet;
+    private readonly int _numberAllAreas = 16;
+    public readonly int PerCent = 100;
+    public readonly int StartSupportBlock = 98;
+    public readonly int StepAddSupportPeople = 2;
+    public readonly int StepRemoveSupportPeople = 10;
 
     public int IndexMinPeopleBlock => _indexStartPeopleBlock;
     public int ContractPrice => _contractPrice;
@@ -35,10 +40,6 @@ public class GameController : MonoBehaviour
     public int TrachTrackPrice => _trachTrackPrice;
     public int ParkingPlacePrice => _parkingPlacePrice;
     public int UpLevelGaragePrice => _upLevelGaragePrice;
-    public int PerCent { get; private set; } = 100;
-    public int StartSupportBlock { get; private set; } = 50;
-    public int StepAddSupportPeople { get; private set; } = 2;
-    public int StepRemoveSupportPeople { get; private set; } = 10;
 
     private void Awake()
     {
@@ -73,8 +74,11 @@ public class GameController : MonoBehaviour
 
     private void ShowVictory()
     {
-        FinishGame();
-        _firework.gameObject.SetActive(true);
+        if (_numberAllAreas <= _areaService.AreasCount)
+        {
+            FinishGame();
+            _firework.gameObject.SetActive(true);
+        }
     }
 
     private void ShowLosing()
@@ -86,7 +90,6 @@ public class GameController : MonoBehaviour
 
     private void FinishGame()
     {
-        Debug.Log("STOP GAME");
         _backSound.Stop();
         _timer.Stop();
         _cityOverview.gameObject.SetActive(false);

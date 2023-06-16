@@ -36,7 +36,6 @@ public class Firework : MonoBehaviour
                     _lists[i].gameObject.SetActive(true);
 
                 _sound.Play();
-                Debug.Log("salut");
 
                 yield return _timer.Delay;
             }

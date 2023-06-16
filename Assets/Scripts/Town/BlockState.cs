@@ -27,8 +27,6 @@ public class BlockState : MonoBehaviour
     private void OnEnable()
     {
         _trashMaxIndex = _maxResidents * _timer.GetTimeDay();
-        _timer.DayIsOver += AddResidents;
-        _timer.TimeChanged += AddTrash;
     }
 
     private void OnDisable()
@@ -52,6 +50,8 @@ public class BlockState : MonoBehaviour
     {
         IsIncluded = true;
         _stateDisplay.gameObject.SetActive(true);
+        _timer.DayIsOver += AddResidents;
+        _timer.TimeChanged += AddTrash;
     }
 
     public void RemoveTrash(int loadingSpeed, out int sendTrashCount, out bool isSendTrash)
