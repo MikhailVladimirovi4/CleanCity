@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -43,8 +42,7 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        Time.timeScale = 0;
-        _menuButton.gameObject.SetActive(true);
+        _menu.gameObject.SetActive(true);
     }
 
     private void OnEnable()
@@ -62,15 +60,27 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
+        _wallet.ResetCoins();
         _wallet.AddCoins(_startingCoins);
-        _menuButton.gameObject.SetActive(true);
-        _menuButton.gameObject.SetActive(false);
-        _menu.gameObject.SetActive(false);
-        _timer.gameObject.SetActive(true);
+        _areaService.ResetState();
+
+        _timer.ResetTime();
+
         _openGarage.gameObject.SetActive(false);
+        _garagePanel.gameObject.SetActive(true);
         _offSoundButton.gameObject.SetActive(true);
         _backSound.Play();
         Time.timeScale = 1;
+    }
+
+    public void OnBackSound()
+    {
+        _backSound.Play();  
+    }
+
+    public void OffBackSound()
+    {
+        _backSound.Stop();
     }
 
     private void ShowVictory()

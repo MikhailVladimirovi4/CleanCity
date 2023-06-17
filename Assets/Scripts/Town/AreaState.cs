@@ -29,15 +29,7 @@ public class AreaState : MonoBehaviour
 
     private void Start()
     {
-        PublicSupport = 0;
-        IsCollectionProgress = false;
-        IsContract = false;
-        int trashMaxIndexBlocks = 0;
-
-        foreach (BlockState block in _blocks)
-            trashMaxIndexBlocks += block.TrashMaxIndex;
-
-        _trashIndexBlocksPerCent = trashMaxIndexBlocks / PerCent;
+        ResetState();
     }
 
     private void FixedUpdate()
@@ -49,6 +41,21 @@ public class AreaState : MonoBehaviour
     {
         IsContract = true;
         OnService();
+    }
+    public void ResetState()
+    {
+        PublicSupport = 0;
+        IsCollectionProgress = false;
+        IsContract = false;
+        int trashMaxIndexBlocks = 0;
+
+        foreach (BlockState block in _blocks)
+        {
+            block.ResetState();
+            trashMaxIndexBlocks += block.TrashMaxIndex;
+        }
+
+        _trashIndexBlocksPerCent = trashMaxIndexBlocks / PerCent;
     }
 
     private void GetData()

@@ -18,6 +18,14 @@ public class AreasService : MonoBehaviour
         _areas.Add(area);
     }
 
+    public void ResetState()
+    {
+        foreach (AreaState area in _areas)
+            area.ResetState();
+
+        _areas.Clear();
+    }
+
     public int GetPopulation()
     {
         int count = 0;

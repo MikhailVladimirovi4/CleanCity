@@ -13953,9 +13953,9 @@ MonoBehaviour:
   m_fontSize: 55
   m_fontSizeBase: 55
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 0
+  m_fontSizeMax: 55
   m_fontStyle: 2
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -15808,10 +15808,10 @@ RectTransform:
   m_Father: {fileID: 1132250718}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 3, y: -280}
-  m_SizeDelta: {x: 989.98, y: 100}
+  m_SizeDelta: {x: -790.02, y: -906}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &239137213
 MonoBehaviour:
@@ -15825,7 +15825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c17a8fc43b51f94eb28780a2f992818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _menu: {fileID: 0}
+  _menu: {fileID: 1132250722}
 --- !u!23 &239137214
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15910,7 +15910,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 239137216}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 239137213}
+        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &239137216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22760,7 +22772,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &309035644
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25596,9 +25608,9 @@ MonoBehaviour:
   m_fontSize: 55
   m_fontSizeBase: 55
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 0
+  m_fontSizeMax: 55
   m_fontStyle: 2
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -33624,7 +33636,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044C\n\n"
+  m_text: "\u041F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044C\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -37564,10 +37576,10 @@ RectTransform:
   m_Father: {fileID: 1132250718}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -140}
-  m_SizeDelta: {x: 989.98, y: 100}
+  m_SizeDelta: {x: -790.02, y: -906}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &688413565
 MeshRenderer:
@@ -37653,7 +37665,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 688413567}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1132250722}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: ShowInfo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &688413567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39214,7 +39238,7 @@ GameObject:
   - component: {fileID: 748731789}
   - component: {fileID: 748731788}
   m_Layer: 5
-  m_Name: Back
+  m_Name: Return
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39235,10 +39259,10 @@ RectTransform:
   m_Father: {fileID: 1132250718}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -70}
-  m_SizeDelta: {x: 989.98, y: 100}
+  m_SizeDelta: {x: -790.02, y: -906}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &748731788
 MeshRenderer:
@@ -39324,7 +39348,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 748731790}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1132250722}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: Return
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &748731790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41820,10 +41856,10 @@ RectTransform:
   m_Father: {fileID: 1132250718}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 140}
-  m_SizeDelta: {x: 989.98, y: 100}
+  m_SizeDelta: {x: -790.02, y: -906}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &818377433
 MeshRenderer:
@@ -41909,7 +41945,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 818377435}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1132250722}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &818377435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42051,9 +42099,9 @@ MonoBehaviour:
   m_fontSize: 55
   m_fontSizeBase: 55
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 0
+  m_fontSizeMax: 55
   m_fontStyle: 2
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -44663,10 +44711,10 @@ RectTransform:
   m_Father: {fileID: 1132250718}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 70}
-  m_SizeDelta: {x: 989.98, y: 100}
+  m_SizeDelta: {x: -790.02, y: -906}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &927406379
 MeshRenderer:
@@ -44752,7 +44800,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 927406381}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1132250722}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: Confirm
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &927406381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54527,14 +54587,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65b36ce7879bb2241bf7a6b4246b0503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _continueGame: {fileID: 818377434}
-  _startGame: {fileID: 1218059396}
+  _continue: {fileID: 818377434}
+  _start: {fileID: 1218059396}
+  _startGameButtonText: {fileID: 389870203}
+  _info: {fileID: 688413566}
   _saveExit: {fileID: 239137213}
   _openMenu: {fileID: 1697515837}
   _controller: {fileID: 79054204}
   _confirm: {fileID: 927406380}
-  _back: {fileID: 748731789}
+  _return: {fileID: 748731789}
   _timer: {fileID: 309035647}
+  _garagePanel: {fileID: 247087606}
+  _cityOverviewPanel: {fileID: 1933054419}
 --- !u!95 &1132250723
 Animator:
   serializedVersion: 3
@@ -56570,10 +56634,10 @@ RectTransform:
   m_Father: {fileID: 1132250718}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 989.98, y: 100}
+  m_SizeDelta: {x: -790.02, y: -906}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &1218059392
 MeshRenderer:
@@ -56659,7 +56723,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1218059394}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1218059396}
+        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1218059394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56710,7 +56786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c17a8fc43b51f94eb28780a2f992818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _menu: {fileID: 0}
+  _menu: {fileID: 1132250722}
 --- !u!4 &1231628545 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4583601733014954174, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
@@ -57045,8 +57121,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288946704
-  m_fontColor: {r: 0.06274508, g: 0.13234392, b: 0.6431373, a: 1}
+    rgba: 4290573304
+  m_fontColor: {r: 1, g: 0.9484277, b: 0.38113207, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -73974,7 +74050,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1697515836
 RectTransform:
   m_ObjectHideFlags: 0
@@ -74017,10 +74093,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.6415094, g: 0.19003202, b: 0.19003202, a: 1}
-    m_PressedColor: {r: 0.1705858, g: 0.7169812, b: 0.15827695, a: 1}
-    m_SelectedColor: {r: 0.764151, g: 0.7499788, b: 0.08939122, a: 1}
-    m_DisabledColor: {r: 0.10416517, g: 0.111930445, b: 0.7169812, a: 0.5019608}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 0.5660378, g: 0.5521538, b: 0.5521538, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -74038,7 +74114,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1697515838}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1132250717}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1697515835}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1697515838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74059,7 +74159,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2ca36290b45eb824095a217c53b3fae9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ced07530217d1fd4e90fed90c9a95d32, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -77704,9 +77804,9 @@ MonoBehaviour:
   m_fontSize: 55
   m_fontSizeBase: 55
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 0
+  m_fontSizeMax: 55
   m_fontStyle: 2
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512

@@ -25,4 +25,9 @@ public class Wallet : MonoBehaviour
             _removeCoin.Play();
         }
     }
+
+    public void ResetCoins()
+    {
+        Coints = 0;
+    }
 }

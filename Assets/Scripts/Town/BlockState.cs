@@ -26,24 +26,13 @@ public class BlockState : MonoBehaviour
 
     private void OnEnable()
     {
-        _trashMaxIndex = _maxResidents * _timer.GetTimeDay();
+        _trashMaxIndex = _maxResidents * _timer.TimeDay;
     }
 
     private void OnDisable()
     {
         _timer.DayIsOver -= AddResidents;
         _timer.TimeChanged -= AddTrash;
-    }
-
-    private void Start()
-    {
-        _trashMaxIndex = _maxResidents * _timer.GetTimeDay();
-        _personTrashOneTime = _controller.GetTrashRatePerson;
-        _addResidents = true;
-        IsIncluded = false;
-        _stateDisplay.gameObject.SetActive(false);
-        PublicSupportBlock = _controller.StartSupportBlock;
-        _residents = _maxResidents * _controller.IndexStartPeopleBlock / _controller.PerCent;
     }
 
     public void Includ()
@@ -69,6 +58,18 @@ public class BlockState : MonoBehaviour
         }
 
         _trashCount -= sendTrashCount;
+    }
+
+    public void ResetState()
+    {
+        _trashMaxIndex = _maxResidents * _timer.TimeDay;
+        _personTrashOneTime = _controller.GetTrashRatePerson;
+        _addResidents = true;
+        IsIncluded = false;
+        _stateDisplay.gameObject.SetActive(false);
+        PublicSupportBlock = _controller.StartSupportBlock;
+        _residents = _maxResidents * _controller.IndexStartPeopleBlock / _controller.PerCent;
+        _trashCount = 0;
     }
 
     private void AddResidents()

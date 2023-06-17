@@ -22,10 +22,10 @@ public class Timer : MonoBehaviour
 
     public bool IsPlaying { get; private set; }
 
-    public int GetMinutes() => _minutes;
-    public int GetHours() => _hours;
-    public int GetDays() => _days;
-    public int GetTimeDay() => _timeDay;
+    public int Minutes => _minutes;
+    public int Hours => _hours;
+    public int Days => _days;
+    public int TimeDay => _timeDay;
     public int SpeedTime => _speedTime;
 
 
@@ -34,17 +34,36 @@ public class Timer : MonoBehaviour
         Delay = new WaitForSeconds(_secondsDelay);
     }
 
-    private void Start()
+    public void ResetTime()
     {
+        _minutes = 0;
+        _hours = 0;
+        _days = 0;
         _speedTime = _secondsDelay;
         IsPlaying = true;
+
+        if (_timeFlow != null)
+            StopCoroutine(_timeFlow);
+
         _timeFlow = StartCoroutine(TimeFlow());
     }
 
     public void Stop()
     {
         IsPlaying = false;
+
+        if(_timeFlow != null)
         StopCoroutine(_timeFlow);
+    }
+
+    public void StartTime()
+    {
+        IsPlaying = true;
+
+        if (_timeFlow != null)
+            StopCoroutine(_timeFlow);
+
+        _timeFlow = StartCoroutine(TimeFlow());
     }
 
     public void SetSpeedTime(int speedModifer)
