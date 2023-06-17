@@ -18,7 +18,7 @@ public class DayTime : MonoBehaviour
 
     private void Update()
     {
-        if (_timer.IsPlaying)
+        if (_timer.IsTimeFlow)
             _timeProgress += Time.deltaTime / _timeDayInSeconds * _timer.SpeedTime;
 
         if (_timeProgress > 1f)

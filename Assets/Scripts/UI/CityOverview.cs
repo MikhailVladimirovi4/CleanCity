@@ -1,11 +1,15 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator))]
 
 public class CityOverview : MonoBehaviour
 {
     [SerializeField] private Timer _timer;
+    [SerializeField] private ListsAreasContract _listsContracts;
+    [SerializeField] private Button _westTown;
+    [SerializeField] private Button _ostTown;
 
     private Animator _animator;
     private Coroutine _changeTransform;
@@ -14,6 +18,9 @@ public class CityOverview : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _animator.SetTrigger(AnimatorCityViewController.Params.OpenPanel);
+        _listsContracts.gameObject.SetActive(false);
+        _westTown.gameObject.SetActive(true);
+        _ostTown.gameObject.SetActive(true);
     }
 
     public void Close()

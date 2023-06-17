@@ -31,6 +31,7 @@ public class Office : MonoBehaviour
     private void OnDisable()
     {
         _timer.DayIsOver -= AddContractCoins;
+        _info.gameObject.SetActive(false);
     }
 
     private void Start()
@@ -42,7 +43,7 @@ public class Office : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_timer.IsPlaying)
+        if (_timer.IsTimeFlow)
             UpdateValues();
     }
 

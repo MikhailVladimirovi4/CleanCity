@@ -23,6 +23,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameOver _gameOver;
     [SerializeField] private GaragePanel _garagePanel;
     [SerializeField] private CityOverview _cityOverview;
+    [SerializeField] private ListsAreasContract _listsContracts;
+    [SerializeField] private VisorMovement _visor;
+    [SerializeField] private GarageState _garageState;
 
     private Wallet _wallet;
     private readonly int _numberAllAreas = 16;
@@ -39,11 +42,9 @@ public class GameController : MonoBehaviour
     public int TrachTrackPrice => _trachTrackPrice;
     public int ParkingPlacePrice => _parkingPlacePrice;
     public int UpLevelGaragePrice => _upLevelGaragePrice;
+    public WaitForSeconds TimeDelay => _timer.Delay;
+    public bool IsPlaying { get; private set; }
 
-    private void Awake()
-    {
-        _menu.gameObject.SetActive(true);
-    }
 
     private void OnEnable()
     {
@@ -58,29 +59,39 @@ public class GameController : MonoBehaviour
         _areaService.Lost -= ShowLosing;
     }
 
+    private void Start()
+    {
+        _menu.gameObject.SetActive(true);
+    }
+
     public void StartGame()
     {
+        IsPlaying = true;
         _wallet.ResetCoins();
         _wallet.AddCoins(_startingCoins);
         _areaService.ResetState();
-
+        _garageState.ResetState();
         _timer.ResetTime();
-
-        _openGarage.gameObject.SetActive(false);
-        _garagePanel.gameObject.SetActive(true);
         _offSoundButton.gameObject.SetActive(true);
-        _backSound.Play();
-        Time.timeScale = 1;
+        PauseGame();
     }
 
-    public void OnBackSound()
+    public void PlayGame()
     {
-        _backSound.Play();  
+        _backSound.Play();
+        _garagePanel.gameObject.SetActive(true);
+        _timer.Run();
+        _visor.AllowMove();
     }
-
-    public void OffBackSound()
+    public void PauseGame()
     {
         _backSound.Stop();
+        _timer.Stop();
+        _visor.BanMove();
+        _openGarage.gameObject.SetActive(false);
+        _garagePanel.gameObject.SetActive(false);
+        _cityOverview.gameObject.SetActive(false);
+        _listsContracts.gameObject.SetActive(false);
     }
 
     private void ShowVictory()
@@ -102,6 +113,7 @@ public class GameController : MonoBehaviour
     private void FinishGame()
     {
         _backSound.Stop();
+        IsPlaying = false;
         _timer.Stop();
         _cityOverview.gameObject.SetActive(false);
         _garagePanel.gameObject.SetActive(false);

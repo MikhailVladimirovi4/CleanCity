@@ -16,9 +16,6 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameController _controller;
     [SerializeField] private Button _confirm;
     [SerializeField] private Button _return;
-    [SerializeField] private Timer _timer;
-    [SerializeField] private GaragePanel _garagePanel;
-    [SerializeField] private CityOverview _cityOverviewPanel;
 
     private Coroutine _changeTransform;
     private Animator _animator;
@@ -28,12 +25,9 @@ public class Menu : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _animator.SetTrigger(AnimatorMenuController.Params.OpenMenu);
-        _timer.Stop();
-        _controller.OffBackSound();
-        _garagePanel.gameObject.SetActive(false);
-        _cityOverviewPanel.gameObject.SetActive(false);
+        _controller.PauseGame();
 
-        if (_timer.IsPlaying)
+        if (_controller.IsPlaying)
             ShowButton(false, false, true, true, true, true);
         else
             ShowButton(false, false, true, true, false, false);
@@ -42,7 +36,7 @@ public class Menu : MonoBehaviour
 
     public void ShowConfirm(string nameAction)
     {
-        if("StartGame" == nameAction && !_timer.IsPlaying)
+        if("StartGame" == nameAction && !_controller.IsPlaying)
         {
             _startGameButtonText.text = "Рестарт игры";
             StartGame();
@@ -94,8 +88,7 @@ public class Menu : MonoBehaviour
             StopCoroutine(_changeTransform);
 
         _changeTransform = StartCoroutine(ChangeTransform());
-        _timer.StartTime();
-        _controller.OnBackSound();
+        _controller.PlayGame();
     }
 
     private void ShowButton(bool confirm = false, bool back = false, bool start = false, bool info = false, bool contin = false, bool saveExit = false)
@@ -117,7 +110,7 @@ public class Menu : MonoBehaviour
             _animator.SetTrigger(AnimatorMenuController.Params.CloseMenu);
             delay--;
 
-            yield return _timer.Delay;
+            yield return _controller.TimeDelay;
         }
 
         gameObject.SetActive(false);

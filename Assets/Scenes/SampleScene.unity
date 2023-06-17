@@ -11393,7 +11393,7 @@ MonoBehaviour:
   _timer: {fileID: 309035647}
   _openGarage: {fileID: 1204569133}
   _menuButton: {fileID: 1697515837}
-  _startingCoins: 1500
+  _startingCoins: 15000
   _trachTrackPrice: 800
   _parkingPlacePrice: 200
   _contractPrice: 500
@@ -11408,6 +11408,9 @@ MonoBehaviour:
   _gameOver: {fileID: 1493941272}
   _garagePanel: {fileID: 247087606}
   _cityOverview: {fileID: 1933054419}
+  _listsContracts: {fileID: 1615625604}
+  _visor: {fileID: 287024508}
+  _garageState: {fileID: 1642499331}
 --- !u!82 &79054205
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16185,6 +16188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a4cddad42259a41862ee402db69b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bayInfo: {fileID: 148555373}
 --- !u!114 &247609486 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 372635621, guid: ca5c94dda2fab934fbe6938755693612, type: 3}
@@ -22939,6 +22943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _display: {fileID: 309035648}
+  _speed: {fileID: 799824362}
 --- !u!114 &309035648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33666,9 +33671,9 @@ MonoBehaviour:
   m_fontSize: 55
   m_fontSizeBase: 55
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 0
+  m_fontSizeMax: 55
   m_fontStyle: 2
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -41021,7 +41026,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &799824361
 RectTransform:
   m_ObjectHideFlags: 0
@@ -41418,9 +41423,9 @@ MonoBehaviour:
   m_fontSize: 55
   m_fontSizeBase: 55
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 0
+  m_fontSizeMax: 55
   m_fontStyle: 2
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -54596,9 +54601,6 @@ MonoBehaviour:
   _controller: {fileID: 79054204}
   _confirm: {fileID: 927406380}
   _return: {fileID: 748731789}
-  _timer: {fileID: 309035647}
-  _garagePanel: {fileID: 247087606}
-  _cityOverviewPanel: {fileID: 1933054419}
 --- !u!95 &1132250723
 Animator:
   serializedVersion: 3
@@ -56287,18 +56289,6 @@ MonoBehaviour:
       - m_Target: {fileID: 287024508}
         m_TargetAssemblyTypeName: VisorMovement, Assembly-CSharp
         m_MethodName: BanMove
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 287024508}
-        m_TargetAssemblyTypeName: VisorMovement, Assembly-CSharp
-        m_MethodName: ResetPosition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -70344,34 +70334,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1933054419}
-        m_TargetAssemblyTypeName: CityOverview, Assembly-CSharp
-        m_MethodName: Close
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1946859198}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Office, Assembly-CSharp
-        m_MethodName: UpdateValues
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -70392,34 +70358,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1107143855}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 52542798}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1615625599}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1933054419}
+        m_TargetAssemblyTypeName: CityOverview, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -80921,6 +80863,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timer: {fileID: 309035647}
+  _listsContracts: {fileID: 1615625604}
+  _westTown: {fileID: 1107143857}
+  _ostTown: {fileID: 52542800}
 --- !u!95 &1933054420
 Animator:
   serializedVersion: 3

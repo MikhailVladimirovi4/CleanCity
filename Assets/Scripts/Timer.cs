@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private TimeDisplay _display;
+    [SerializeField] private SpeedTime _speed;
 
     private readonly int _secondsDelay = 1;
     private int _speedTime;
@@ -19,8 +20,7 @@ public class Timer : MonoBehaviour
     public event UnityAction DayIsOver;
     public event UnityAction<int> TimeChanged;
     public WaitForSeconds Delay { get; private set; }
-
-    public bool IsPlaying { get; private set; }
+    public bool IsTimeFlow { get; private set; }
 
     public int Minutes => _minutes;
     public int Hours => _hours;
@@ -40,30 +40,18 @@ public class Timer : MonoBehaviour
         _hours = 0;
         _days = 0;
         _speedTime = _secondsDelay;
-        IsPlaying = true;
-
-        if (_timeFlow != null)
-            StopCoroutine(_timeFlow);
-
-        _timeFlow = StartCoroutine(TimeFlow());
+        _speed.gameObject.SetActive(false);
     }
 
     public void Stop()
     {
-        IsPlaying = false;
-
-        if(_timeFlow != null)
-        StopCoroutine(_timeFlow);
+        IsTimeFlow = false;
     }
 
-    public void StartTime()
+    public void Run()
     {
-        IsPlaying = true;
-
-        if (_timeFlow != null)
-            StopCoroutine(_timeFlow);
-
-        _timeFlow = StartCoroutine(TimeFlow());
+        StartingTimeFlow();
+        _speed.gameObject.SetActive(true);
     }
 
     public void SetSpeedTime(int speedModifer)
@@ -91,14 +79,24 @@ public class Timer : MonoBehaviour
         }
     }
 
+    private void StartingTimeFlow()
+    {
+        IsTimeFlow = true;
+
+        if (_timeFlow != null)
+            StopCoroutine(_timeFlow);
+
+        _timeFlow = StartCoroutine(TimeFlow());
+    }
+
     IEnumerator TimeFlow()
     {
-        while (IsPlaying)
+        while (IsTimeFlow)
         {
-            _minutes += _secondsDelay * _speedTime;
-            CountTime();
-            _display.DisplayTime(_days, _hours, _minutes);
-            TimeChanged?.Invoke(_speedTime);
+                _minutes += _secondsDelay * _speedTime;
+                CountTime();
+                _display.DisplayTime(_days, _hours, _minutes);
+                TimeChanged?.Invoke(_speedTime);
 
             yield return Delay;
         }

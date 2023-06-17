@@ -8,7 +8,7 @@ public class SpeedTime : MonoBehaviour
     [SerializeField] private Timer _timer;
     [SerializeField] private Button _button;
 
-    private bool _isSpeedMax = false;
+    private bool _isSpeedMax;
     private readonly string _lowSpeed = "Ускорить время х60";
     private readonly string _maxSpeed = "Замедлить время х1";
     private readonly int _accelerationTime = 60;
@@ -19,6 +19,7 @@ public class SpeedTime : MonoBehaviour
         _button.onClick.AddListener(CheckSpeed);
         _text.text = _lowSpeed;
         _text.color = Color.green;
+        _isSpeedMax = false;
     }
 
     private void OnDisable()

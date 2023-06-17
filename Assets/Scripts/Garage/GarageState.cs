@@ -19,9 +19,8 @@ public class GarageState : MonoBehaviour
     public int Level { get; private set; }
     public int MaxLevelGarage => _maxLevelGarage;
 
-    private void Start()
+    private void OnEnable()
     {
-        Level = 1;
         _trackPark = GetComponent<TrackPark>();
     }
 
@@ -52,6 +51,15 @@ public class GarageState : MonoBehaviour
                 break;
         }
     }
+    public void ResetState()
+    {
+        _box.gameObject.SetActive(false);
+        _floor.gameObject.SetActive(false);
+        _trees.gameObject.SetActive(false);
+        _bench.gameObject.SetActive(false);
+        _trackPark.ResetState();
+        Level = 1;
+    }
 
     public void AddParkingPlace() => _trackPark.AddPlace();
 
@@ -61,7 +69,7 @@ public class GarageState : MonoBehaviour
 
         _smoke.gameObject.SetActive(true);
 
-        while (duration >0)
+        while (duration > 0)
         {
             duration--;
 

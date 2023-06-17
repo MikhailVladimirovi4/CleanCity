@@ -44,9 +44,18 @@ public class VisorMovement : MonoBehaviour
             ChangeTransform();
     }
 
-    public void BanMove() => _isOpenOffice = true;
-    public void AllowMove() => _isOpenOffice = false;
-    public void ResetPosition()
+    public void BanMove()
+    {
+        _isOpenOffice = true;
+        ResetPosition();
+    }
+
+    public void AllowMove()
+    {
+        _isOpenOffice = false;
+    }
+
+    private void ResetPosition()
     {
         transform.position = _startPosition;
         transform.rotation = Quaternion.Euler(_startRotateX, _startRotateY, _startRotateZ);

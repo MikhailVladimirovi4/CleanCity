@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class TrackPark : MonoBehaviour
@@ -18,14 +19,27 @@ public class TrackPark : MonoBehaviour
 
     private void Start()
     {
-        CurrentCountPlace = 0;
-        CurrentCountTrack = 0;
+        ResetState();
         MaxCountPlace = _places.Count;
     }
 
     private void FixedUpdate()
     {
         IsFreeTrack = (GetFreeTrack() != null);
+    }
+
+    public void ResetState()
+    {
+        CurrentCountPlace = 0;
+        CurrentCountTrack = 0;
+
+        foreach (Place place in _places)
+            place.gameObject.SetActive(false);
+
+        foreach (TrashTrack track in _tracks)
+            Destroy(track.gameObject);
+
+        _tracks.Clear();
     }
 
     public void AddTrashTrack()
