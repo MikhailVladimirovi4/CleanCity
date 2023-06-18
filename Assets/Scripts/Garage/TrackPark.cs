@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro.EditorUtilities;
+using UnityEditor;
 using UnityEngine;
 
 public class TrackPark : MonoBehaviour
@@ -28,13 +29,19 @@ public class TrackPark : MonoBehaviour
         IsFreeTrack = (GetFreeTrack() != null);
     }
 
+    public void AllowTrackMove() => TrackMove(true);
+    public void BanTrackMove() => TrackMove(false);
+
     public void ResetState()
     {
         CurrentCountPlace = 0;
         CurrentCountTrack = 0;
 
         foreach (Place place in _places)
+        {
+            place.Clear();
             place.gameObject.SetActive(false);
+        }
 
         foreach (TrashTrack track in _tracks)
             Destroy(track.gameObject);
@@ -100,5 +107,11 @@ public class TrackPark : MonoBehaviour
             }
         }
         return freeTrack;
+    }
+
+    private void TrackMove(bool isAllowMove)
+    {
+        foreach (TrashTrack track in _tracks)
+            track.AllowMove(isAllowMove);
     }
 }

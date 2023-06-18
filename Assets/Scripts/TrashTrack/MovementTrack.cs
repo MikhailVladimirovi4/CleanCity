@@ -24,20 +24,17 @@ public class MovementTrack : MonoBehaviour
 
     private void Update()
     {
-        if (_target != null)
+        if (_track.IsAllowMove && _target != null && !_spaceCargo.IsLoadingtrash)
         {
-            if (!_spaceCargo.IsLoadingtrash)
-            {
-                transform.rotation = Quaternion.LookRotation(_target.position - transform.position, Vector3.up);
+            transform.rotation = Quaternion.LookRotation(_target.position - transform.position, Vector3.up);
 
-                if (transform.position != _target.position)
-                {
-                    transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * _track.SpeedTime * Time.deltaTime);
-                }
-                else
-                {
-                    _target = _navigator.GetTarget();
-                }
+            if (transform.position != _target.position)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * _track.SpeedTime * Time.deltaTime);
+            }
+            else
+            {
+                _target = _navigator.GetTarget();
             }
         }
     }

@@ -47,6 +47,20 @@ public class Office : MonoBehaviour
             UpdateValues();
     }
 
+    public void Reset()
+    {
+        string startCount = "0";
+
+        _reputationValue.text = startCount;
+        _areasServiceCount.text = startCount;
+        _population.text = startCount;
+        _freeParkingPlace.text = startCount;
+        _trashPerCent.text = startCount;
+    }
+
+    public void RunWork() => _trackPark.AllowTrackMove();
+    public void StopWork() => _trackPark.BanTrackMove();
+
     public void UpLevel()
     {
         string text;

@@ -11,4 +11,5 @@ public class Place : MonoBehaviour
     }
 
     public void Take() => IsBusy = true;
+    public void Clear() => IsBusy = false;
 }

@@ -13,13 +13,17 @@ public class TrashTrack : MonoBehaviour
 
     public bool IsFree => _isFree;
     public int SpeedTime => _timer.SpeedTime;
+    public bool IsAllowMove { get; private set; }
 
     private void OnEnable()
     {
         _isFree = true;
+        IsAllowMove = true;
         _movement = GetComponent<MovementTrack>();
         _navigator = GetComponent<Navigator>();
     }
+
+    public void AllowMove(bool isAllowMove) => IsAllowMove = isAllowMove;
 
     public void MarkEndCollection()
     {

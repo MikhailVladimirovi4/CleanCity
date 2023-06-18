@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GarageState _garageState;
 
     private Wallet _wallet;
+    private Office _office;
     private readonly int _numberAllAreas = 16;
     public readonly int PerCent = 100;
     public readonly int StartSupportBlock = 50;
@@ -49,6 +50,7 @@ public class GameController : MonoBehaviour
     private void OnEnable()
     {
         _wallet = GetComponent<Wallet>();
+        _office = GetComponent<Office>();
         _areaService.Won += ShowVictory;
         _areaService.Lost += ShowLosing;
     }
@@ -73,6 +75,7 @@ public class GameController : MonoBehaviour
         _garageState.ResetState();
         _timer.ResetTime();
         _offSoundButton.gameObject.SetActive(true);
+        _office.Reset();
         PauseGame();
     }
 
@@ -82,16 +85,19 @@ public class GameController : MonoBehaviour
         _garagePanel.gameObject.SetActive(true);
         _timer.Run();
         _visor.AllowMove();
+        _office.RunWork();
     }
     public void PauseGame()
     {
         _backSound.Stop();
         _timer.Stop();
         _visor.BanMove();
+        _office.StopWork();
         _openGarage.gameObject.SetActive(false);
         _garagePanel.gameObject.SetActive(false);
         _cityOverview.gameObject.SetActive(false);
         _listsContracts.gameObject.SetActive(false);
+
     }
 
     private void ShowVictory()
@@ -112,11 +118,7 @@ public class GameController : MonoBehaviour
 
     private void FinishGame()
     {
-        _backSound.Stop();
         IsPlaying = false;
-        _timer.Stop();
-        _cityOverview.gameObject.SetActive(false);
-        _garagePanel.gameObject.SetActive(false);
-        _openGarage.gameObject.SetActive(false);
+        PauseGame();
     }
 }
