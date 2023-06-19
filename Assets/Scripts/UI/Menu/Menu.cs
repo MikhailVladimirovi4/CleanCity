@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +17,7 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameController _controller;
     [SerializeField] private Button _confirm;
     [SerializeField] private Button _return;
+    [SerializeField] private Manual _manual;
 
     private Coroutine _changeTransform;
     private Animator _animator;
@@ -30,7 +32,7 @@ public class Menu : MonoBehaviour
         if (_controller.IsPlaying)
             ShowButton(false, false, true, true, true, true);
         else
-            ShowButton(false, false, true, true, false, false);
+            ShowButton(false, false, true, true);
 
     }
 
@@ -43,7 +45,7 @@ public class Menu : MonoBehaviour
         }
 
         _nameAction = nameAction;
-        ShowButton(true, true, false, false, false, false);
+        ShowButton(true, true);
     }
 
     public void Confirm()
@@ -91,7 +93,7 @@ public class Menu : MonoBehaviour
         _controller.PlayGame();
     }
 
-    private void ShowButton(bool confirm = false, bool back = false, bool start = false, bool info = false, bool contin = false, bool saveExit = false)
+    private void ShowButton(bool confirm = false, bool back = false, bool start = false, bool info = false, bool contin = false, bool saveExit = false, bool manual = false)
     {
         _confirm.gameObject.SetActive(confirm);
         _return.gameObject.SetActive(back);
@@ -99,6 +101,7 @@ public class Menu : MonoBehaviour
         _info.gameObject.SetActive(info);
         _continue.gameObject.SetActive(contin);
         _saveExit.gameObject.SetActive(saveExit);
+        _manual.gameObject.SetActive(manual);
     }
 
     private IEnumerator ChangeTransform()
