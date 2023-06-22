@@ -28,12 +28,7 @@ public class Menu : MonoBehaviour
         _animator = GetComponent<Animator>();
         _animator.SetTrigger(AnimatorMenuController.Params.OpenMenu);
         _controller.PauseGame();
-
-        if (_controller.IsPlaying)
-            ShowButton(false, false, true, true, true, true);
-        else
-            ShowButton(false, false, true, true);
-
+        ShowButtonMenu();
     }
 
     public void ShowConfirm(string nameAction)
@@ -66,11 +61,15 @@ public class Menu : MonoBehaviour
 
     public void Return()
     {
-        ShowButton(false, false, true, true, true, true);
+        ShowButton(false, false, true, true, true);
     }
-    public void ShowInfo()
+    public void OpenManual()
     {
-        Debug.Log("info");
+        ShowButton(false, false, false, false, false, false, true);
+    }
+    public void CloseManual()
+    {
+        ShowButtonMenu();
     }
 
     private void StartGame()
@@ -91,6 +90,14 @@ public class Menu : MonoBehaviour
 
         _changeTransform = StartCoroutine(ChangeTransform());
         _controller.PlayGame();
+    }
+
+    private void ShowButtonMenu()
+    {
+        if (_controller.IsPlaying)
+            ShowButton(false, false, true, true, true);
+        else
+            ShowButton(false, false, true, true);
     }
 
     private void ShowButton(bool confirm = false, bool back = false, bool start = false, bool info = false, bool contin = false, bool saveExit = false, bool manual = false)
