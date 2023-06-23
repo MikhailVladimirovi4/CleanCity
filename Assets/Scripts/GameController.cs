@@ -75,6 +75,8 @@ public class GameController : MonoBehaviour
         _garageState.ResetState();
         _timer.ResetTime();
         _offSoundButton.gameObject.SetActive(true);
+        _gameOver.gameObject.SetActive(false);
+        _firework.gameObject.SetActive(false);
         _office.Reset();
         PauseGame();
     }
@@ -87,6 +89,7 @@ public class GameController : MonoBehaviour
         _visor.AllowMove();
         _office.RunWork();
     }
+
     public void PauseGame()
     {
         _backSound.Stop();
@@ -112,7 +115,6 @@ public class GameController : MonoBehaviour
     private void ShowLosing()
     {
         FinishGame();
-        Time.timeScale = 0;
         _gameOver.gameObject.SetActive(true);
     }
 

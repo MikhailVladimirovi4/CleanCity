@@ -33,7 +33,7 @@ public class Menu : MonoBehaviour
 
     public void ShowConfirm(string nameAction)
     {
-        if("StartGame" == nameAction && !_controller.IsPlaying)
+        if("Start" == nameAction && !_controller.IsPlaying)
         {
             _startGameButtonText.text = "Рестарт игры";
             StartGame();
@@ -47,7 +47,7 @@ public class Menu : MonoBehaviour
     {
         switch (_nameAction)
         {
-            case "StartGame":
+            case "Start":
                 StartGame();
                 break;
 
